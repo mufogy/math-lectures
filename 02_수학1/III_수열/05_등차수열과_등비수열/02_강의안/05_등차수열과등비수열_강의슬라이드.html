@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>강 05 · 등차수열과 등비수열</title>
+
+<!-- 디자인과 동작은 모든 강이 공유합니다. 고치면 전 강에 반영됩니다. -->
+<link rel="stylesheet" href="../../../../00_공통/02_서식_스타일/katex/katex.min.css">
+<link rel="stylesheet" href="../../../../00_공통/02_서식_스타일/slide.css">
+<script defer src="../../../../00_공통/02_서식_스타일/katex/katex.min.js"></script>
+<script defer src="../../../../00_공통/02_서식_스타일/katex/contrib/auto-render.min.js"></script>
+<script defer src="../../../../00_공통/02_서식_스타일/slide.js"></script>
+</head>
+<body>
+
+<div id="viewport"><div id="stage">
+
+<section class="slide cover" data-sec="표지" data-notes="오프닝.
+· 함수·도형에서 수열로 넘어간다. 결이 다른 단원이라는 것을 먼저 말해 둔다.
+· 수열에서 할 일은 딱 두 가지: ① 일반항 세우기 ② 합 구하기. 이 두 줄로 단원 전체를 요약한다.
+· 칠판에 3, 6, 9, 12, … 를 쓰고 '100번째 수는?' 으로 시작하면 자연스럽다.
+· 교재 p.68~83.">
+  <div class="eyebrow">2027 EBS 수능특강 수학Ⅰ · 강 05</div>
+  <h1 class="title">등차수열과 등비수열</h1>
+  <p class="lead" style="margin-top:22px">
+    수열에서 할 일은 두 가지뿐입니다 —<br>
+    <strong>일반항을 세우고, 합을 구한다.</strong>
+  </p>
+  <div class="meta">
+    <span class="chip">교재 p.68 ~ 83</span>
+    <span class="chip">개념 5차시 + 문제풀이 2차시</span>
+    <span class="chip">28 ~ 34차시</span>
+  </div>
+</section>
+
+<section class="slide" data-sec="오리엔테이션" data-notes="로드맵.
+· 등차(더하기)와 등비(곱하기)가 완전히 대칭 구조라는 것을 먼저 보여 준다. 1·2차시에서 한 것을 4·5차시에서 그대로 반복한다.
+· 3차시 Sn 과 an 의 관계는 둘 다에 쓰이는 공통 도구.">
+  <h2>이 강의 지도 <span class="pg">p.68 ~ 83</span></h2>
+  <div class="body">
+    <p class="lead">등차는 <strong>더하기</strong>, 등비는 <strong>곱하기</strong> — 구조가 똑같습니다.</p>
+    <div class="roadmap">
+      <div class="rm"><div class="n">1차시</div><div class="t">등차수열의 일반항</div>
+        <div>$a_{n}=a+(n-1)d$</div><div class="p">p.68 ~ 69</div></div>
+      <div class="rm"><div class="n">2차시</div><div class="t">등차수열의 합</div>
+        <div>거꾸로 더하기</div><div class="p">p.70 ~ 71</div></div>
+      <div class="rm"><div class="n">3차시</div><div class="t">$S_{n}$ 과 $a_{n}$</div>
+        <div>둘 다에 쓰이는 도구</div><div class="p">p.72 ~ 73</div></div>
+      <div class="rm"><div class="n">4차시</div><div class="t">등비수열의 일반항</div>
+        <div>$a_{n}=ar^{\,n-1}$</div><div class="p">p.74 ~ 75</div></div>
+      <div class="rm"><div class="n">5차시</div><div class="t">등비수열의 합</div>
+        <div>$r$ 배 하고 빼기</div><div class="p">p.76 ~ 77</div></div>
+    </div>
+    <div class="card warm">
+      <span class="tag">6 · 7차시</span>
+      <p>Level 1 기초 → Level 2 기본 → Level 3 실력 → 대표 기출 (p.78 ~ 83)</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 1차시 ═════════ -->
+<section class="slide section" data-sec="1차시" data-notes="칠판에 3, 7, 11, 15, … 를 쓰고 '20번째 수는?' 을 묻는다. 하나씩 세는 학생이 나오면 그대로 두었다가 공식의 필요성을 느끼게 한다.">
+  <div class="num">01</div>
+  <h1>등차수열의 일반항</h1>
+  <p class="lead">첫째항에서 <strong>$d$ 를 $(n-1)$ 번</strong> 더한 것 — 그게 전부입니다.</p>
+</section>
+
+<section class="slide" data-sec="1차시" data-notes="용어 정리. 빠르게 넘어가되 기호는 정확히.
+· 수열 {a_n}, 일반항 a_n, 첫째항 a_1
+· 등차수열의 공차 d = a_(n+1) - a_n
+발문: '공차를 구하려면 어느 두 항이 필요할까?' → 이웃한 두 항.">
+  <h2>수열과 등차수열 <span class="pg">p.68</span></h2>
+  <div class="body">
+    <div class="cols">
+      <div class="card">
+        <span class="tag">용어</span>
+        <p>차례로 나열한 수의 열 = <strong>수열</strong><br>
+           각각의 수 = <strong>항</strong><br>
+           $n$ 째항 $a_{n}$ 을 $n$ 의 식으로 쓴 것 = <strong>일반항</strong><br>
+           수열 전체를 기호로 $\{a_{n}\}$</p>
+      </div>
+      <div class="card accent">
+        <span class="tag">등차수열</span>
+        <p>첫째항부터 차례로 <strong>일정한 수를 더해</strong> 만든 수열<br>
+           그 일정한 수 = <strong>공차 $d$</strong></p>
+        <p style="margin-top:12px;font-size:28px">$d=a_{n+1}-a_{n}$</p>
+      </div>
+    </div>
+    <div class="card good">
+      <span class="tag">핵심 감각</span>
+      <p>$a_{1}$ 에서 $a_{n}$ 까지 가려면 $d$ 를 <strong>$n$ 번이 아니라 $(n-1)$ 번</strong> 더합니다.
+         $a_{1}$ 은 이미 출발점에 있기 때문입니다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-sec="1차시" data-notes="영상 (약 40초). 수직선 위에서 +d 를 반복하며 일반항이 만들어지는 과정.
+· 재생 전: '화살표가 몇 개인지 세어 보라'고 미리 말해 둔다. 항이 6개면 화살표는 5개.
+· 뒤쪽 등차중항이 나오면 정지하고 다음 슬라이드로.">
+  <h2>$(n-1)$ 번 건너뛰기 <span class="pg">p.68</span></h2>
+  <div class="body">
+    <div class="video-wrap"><video data-src="media/S1ArithTerm.mp4" controls playsinline preload="metadata"></video></div>
+  </div>
+</section>
+
+<section class="slide" data-sec="1차시" data-notes="일반항과 등차중항.
+· 일반항을 an = dn + (a-d) 로 정리하면 n에 대한 일차식이라는 것도 짚어 준다. 그래프로 보면 점들이 직선 위에 놓인다.
+· 등차중항은 '가운데가 양옆의 평균'. 세 수가 등차수열을 이룬다는 조건이 나오면 바로 2b=a+c.">
+  <h2>일반항과 등차중항 <span class="pg">p.68</span></h2>
+  <div class="body">
+    <div class="formula big">
+      $a_{n}=a+(n-1)d$
+      <div style="font-size:24px;color:var(--muted);margin-top:14px">
+        정리하면 $a_{n}=dn+(a-d)$ — <strong>$n$ 에 대한 일차식</strong>
+      </div>
+    </div>
+    <div class="cols">
+      <div class="card accent">
+        <span class="tag">등차중항</span>
+        <p>세 수 $a,\ b,\ c$ 가 이 순서로 등차수열을 이루면</p>
+        <p style="font-size:30px;margin-top:10px">$2b=a+c$, &nbsp; 즉 $b=\dfrac{a+c}{2}$</p>
+      </div>
+      <div class="card good">
+        <span class="tag">그래프로 보면</span>
+        <p>일반항이 $n$ 의 일차식이므로,
+           점 $(n,\ a_{n})$ 들은 <strong>한 직선 위</strong>에 일정한 간격으로 놓입니다.
+           기울기가 곧 공차 $d$ 입니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 2차시 ═════════ -->
+<section class="slide section" data-sec="2차시" data-notes="'1부터 100까지 더하면?' 가우스 일화로 시작하면 몰입도가 높다. 학생이 5050 을 알고 있어도 '왜 그렇게 되는지' 를 묻는다.">
+  <div class="num">02</div>
+  <h1>등차수열의 합</h1>
+  <p class="lead">같은 합을 <strong>거꾸로 한 번 더 써서</strong> 더하면 전부 같아집니다.</p>
+</section>
+
+<section class="slide" data-sec="2차시" data-notes="영상 (약 40초). 거꾸로 쓰기 → 세로로 더하기 → 전부 (a+l) → n개.
+· 재생 전: '왜 거꾸로 쓸까?' 를 먼저 물어 두면 영상에서 답을 찾는다.
+· 세로로 더한 값이 전부 같아지는 순간이 핵심. 여기서 정지하고 '왜 전부 같지?' 발문 → 앞에서 d 만큼 늘고 뒤에서 d 만큼 줄어 상쇄.">
+  <h2>거꾸로 더하기 <span class="pg">p.70</span></h2>
+  <div class="body">
+    <div class="video-wrap"><video data-src="media/S2ArithSum.mp4" controls playsinline preload="metadata"></video></div>
+  </div>
+</section>
+
+<section class="slide" data-sec="2차시" data-notes="합 공식 두 가지.
+· 끝항 l 을 알면 위쪽, 공차 d 를 알면 아래쪽. 문제에서 뭐가 주어졌는지 보고 고른다.
+· Sn 이 상수항 없는 n의 이차식이라는 참고 사항은 3차시와 Level 2 이상에서 요긴하게 쓰인다. 반드시 언급할 것.">
+  <h2>합 공식 <span class="pg">p.70</span></h2>
+  <div class="body">
+    <div class="cols">
+      <div class="card accent">
+        <span class="tag">끝항 $l$ 을 알 때</span>
+        <p style="font-size:34px;margin-top:10px">$S_{n}=\dfrac{n(a+l)}{2}$</p>
+        <p style="color:var(--muted);font-size:23px;margin-top:10px">
+          (첫항 + 끝항) × 항수 ÷ 2</p>
+      </div>
+      <div class="card accent">
+        <span class="tag">공차 $d$ 를 알 때</span>
+        <p style="font-size:34px;margin-top:10px">$S_{n}=\dfrac{n\{2a+(n-1)d\}}{2}$</p>
+        <p style="color:var(--muted);font-size:23px;margin-top:10px">
+          위 식에 $l=a+(n-1)d$ 를 넣은 것</p>
+      </div>
+    </div>
+    <div class="card good">
+      <span class="tag">반드시 기억할 참고</span>
+      <p>정리하면 $S_{n}=\dfrac{d}{2}n^{2}+\dfrac{2a-d}{2}n$ —
+         <strong>상수항이 $0$ 인 $n$ 에 대한 이차식</strong>입니다.<br>
+         역으로 $S_{n}=An^{2}+Bn$ 꼴이면 그 수열은 등차수열입니다. 기출에 자주 나옵니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 3차시 ═════════ -->
+<section class="slide section" data-sec="3차시" data-notes="칠판에 Sn = n² + 3n 을 쓰고 'a_5 는?' 으로 시작. S5 - S4 를 떠올리게 유도.">
+  <div class="num">03</div>
+  <h1>$S_{n}$ 과 $a_{n}$ 의 관계</h1>
+  <p class="lead">겹치는 부분을 빼면 <strong>딱 한 항</strong>만 남습니다.</p>
+</section>
+
+<section class="slide" data-sec="3차시" data-notes="영상 (약 35초). 막대 그림으로 Sn 과 S(n-1) 의 겹침을 보여 주고, 상쇄되어 a_n 만 남는 것을 시각화.
+· 마지막 빨간 경고가 이번 차시의 전부: n=1 은 따로 확인해야 한다.
+· 재생 후 '왜 n=1 은 안 될까?' 를 반드시 물을 것 → S_0 이 정의되지 않으므로.">
+  <h2>겹치는 부분 지우기 <span class="pg">p.72</span></h2>
+  <div class="body">
+    <div class="video-wrap"><video data-src="media/S3SnAn.mp4" controls playsinline preload="metadata"></video></div>
+  </div>
+</section>
+
+<section class="slide" data-sec="3차시" data-notes="관계식과 확인 절차.
+이 차시의 실전 포인트는 '구한 an 에 n=1 을 넣어 a1 과 같은지 확인'하는 절차다.
+· 같으면 → 하나의 식으로 쓸 수 있다
+· 다르면 → 반드시 두 줄로 나눠 답해야 한다
+Sn = pn²+qn+r 에서 r ≠ 0 이면 첫째항만 어긋난다는 구조를 이해시키면 문제가 쉬워진다.">
+  <h2>관계식과 확인 절차 <span class="pg">p.72</span></h2>
+  <div class="body">
+    <div class="formula big">
+      $a_{1}=S_{1},\qquad a_{n}=S_{n}-S_{n-1}\ \ (n\ge 2)$
+    </div>
+    <ol class="steps">
+      <li>$n\ge 2$ 에서 $a_{n}=S_{n}-S_{n-1}$ 을 계산한다</li>
+      <li>그 식에 $n=1$ 을 넣어 본다</li>
+      <li>$S_{1}$ 과 <strong>같으면</strong> 한 줄로, <strong>다르면</strong> 두 줄로 나눠 답한다</li>
+    </ol>
+    <div class="card bad">
+      <span class="tag">왜 $n=1$ 이 따로인가</span>
+      <p>$a_{1}=S_{1}-S_{0}$ 인데 <strong>$S_{0}$ 이 정의되지 않기</strong> 때문입니다.
+         $S_{n}=pn^{2}+qn+r$ 에서 $r\ne 0$ 이면 첫째항만 어긋납니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 4차시 ═════════ -->
+<section class="slide section" data-sec="4차시" data-notes="칠판에 2, 6, 18, 54, … 를 쓰고 '이번엔 뭐가 일정할까?' 로 시작. 차가 아니라 비가 일정하다는 것을 학생이 찾게 한다.">
+  <div class="num">04</div>
+  <h1>등비수열의 일반항</h1>
+  <p class="lead">등차의 <strong>더하기를 곱하기로</strong> 바꾸면 그대로입니다.</p>
+</section>
+
+<section class="slide" data-sec="4차시" data-notes="영상 (약 40초). 막대 그래프가 ×r 로 커지는 모습 → 일반항.
+· 등차의 수직선 그림과 대비시켜 보여 준다. 구조가 같다는 것이 핵심.
+· 뒤쪽 등비중항에서 b² = ac 가 나오면 정지.
+발문: '등비중항은 왜 답이 두 개일까?' → 제곱근이므로 ±.">
+  <h2>$(n-1)$ 번 곱하기 <span class="pg">p.74</span></h2>
+  <div class="body">
+    <div class="video-wrap"><video data-src="media/S4GeoTerm.mp4" controls playsinline preload="metadata"></video></div>
+  </div>
+</section>
+
+<section class="slide" data-sec="4차시" data-notes="등차와 등비 대비표. 이 강에서 가장 중요한 한 장. 사진을 찍게 한다.
+· 왼쪽을 배웠으면 오른쪽은 '덧셈을 곱셈으로 바꾸기'만 하면 된다는 것을 강조.
+· 등비중항의 부호 두 개는 실수 포인트. 문제 조건(양수, 자연수 등)으로 하나를 걸러야 한다.">
+  <h2>등차와 등비 — 나란히 보기 <span class="pg">p.74</span></h2>
+  <div class="body">
+    <table>
+      <tr><th style="width:22%"></th><th>등차수열</th><th>등비수열</th></tr>
+      <tr><th>만드는 법</th><td>일정한 수를 <strong>더한다</strong></td><td>일정한 수를 <strong>곱한다</strong></td></tr>
+      <tr><th>그 수</th><td>공차 $d=a_{n+1}-a_{n}$</td>
+          <td>공비 $r=\dfrac{a_{n+1}}{a_{n}}$ &nbsp;<span style="font-size:20px;color:var(--muted)">($a_{n}\ne0$)</span></td></tr>
+      <tr><th>일반항</th><td>$a_{n}=a+(n-1)d$</td>
+          <td>$a_{n}=ar^{\,n-1}$ &nbsp;<span style="font-size:20px;color:var(--muted)">($a\ne0,\ r\ne0$)</span></td></tr>
+      <tr><th>중항</th><td>$2b=a+c$</td>
+          <td class="no">$b^{2}=ac$ &nbsp;<span style="font-size:20px;color:var(--muted)">($a,b,c$ 는 $0$ 이 아님)</span></td></tr>
+    </table>
+    <div class="card bad">
+      <span class="tag">등비중항의 함정</span>
+      <p>$b^{2}=ac$ 에서 $b=\pm\sqrt{ac}$ — <strong>답이 두 개</strong> 나옵니다.
+         문제의 조건(양수, 자연수, 증가수열 등)으로 하나를 걸러야 합니다.</p>
+      <p style="margin-top:12px;color:var(--muted);font-size:23px">
+        등비중항은 $\dfrac{b}{a}=\dfrac{c}{b}$ 에서 나오므로
+        <strong>세 수가 모두 $0$ 이 아니어야</strong> 식을 세울 수 있습니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 5차시 ═════════ -->
+<section class="slide section" data-sec="5차시" data-notes="'등차는 거꾸로 써서 더했다. 등비는?' 로 시작. 거꾸로 써도 소용없다는 것을 먼저 확인시킨 뒤 r 배 아이디어를 꺼낸다.">
+  <div class="num">05</div>
+  <h1>등비수열의 합</h1>
+  <p class="lead">$r$ 배 해서 빼면 <strong>가운데가 전부 사라집니다.</strong></p>
+</section>
+
+<section class="slide" data-sec="5차시" data-notes="영상 (약 40초). Sn 과 rSn 을 한 칸 어긋나게 놓고 빼는 과정.
+· 등차에서는 '더했고' 등비에서는 '뺀다'는 대비를 짚는다.
+· 겹치는 항이 전부 상쇄되고 양 끝 a 와 ar^n 만 남는 순간이 핵심.
+· 마지막 r=1 인 경우가 따로 나오는 이유를 반드시 물을 것 → 분모가 0 이 되므로.">
+  <h2>$r$ 배 하고 빼기 <span class="pg">p.76</span></h2>
+  <div class="body">
+    <div class="video-wrap"><video data-src="media/S5GeoSum.mp4" controls playsinline preload="metadata"></video></div>
+  </div>
+</section>
+
+<section class="slide" data-sec="5차시" data-notes="합 공식.
+· 두 형태는 같은 식이다. r<1 이면 위쪽, r>1 이면 아래쪽을 쓰면 분모·분자가 양수가 되어 계산이 편하다.
+· r=1 을 빠뜨리는 것이 가장 흔한 실수. 공비가 문자로 주어지면 반드시 경우를 나눠야 한다.">
+  <h2>합 공식 <span class="pg">p.76</span></h2>
+  <div class="body">
+    <div class="formula big">
+      $S_{n}=\dfrac{a(1-r^{\,n})}{1-r}=\dfrac{a(r^{\,n}-1)}{r-1}\quad(r\ne 1)$
+    </div>
+    <div class="cols">
+      <div class="card accent">
+        <span class="tag">어느 쪽을 쓸까</span>
+        <p>$r&lt;1$ 이면 왼쪽, $r>1$ 이면 오른쪽<br>
+        <span style="color:var(--muted);font-size:23px">
+          분모·분자가 모두 양수가 되어 계산이 편합니다. 두 식은 같은 식입니다.</span></p>
+      </div>
+      <div class="card bad">
+        <span class="tag">$r=1$ 인 경우</span>
+        <p style="font-size:30px">$S_{n}=na$</p>
+        <p style="color:var(--muted);font-size:23px;margin-top:10px">
+          분모가 $0$ 이 되므로 공식을 쓸 수 없습니다.
+          공비가 <strong>문자</strong>로 주어지면 반드시 경우를 나누세요.</p>
+      </div>
+    </div>
+    <div class="card good">
+      <span class="tag">이 강 전체를 한 줄로</span>
+      <p>등차의 합은 <strong>거꾸로 써서 더하고</strong>, 등비의 합은 <strong>$r$ 배 해서 뺍니다.</strong>
+         둘 다 “겹치는 것을 없앤다”는 같은 발상입니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 6·7차시 / 마무리 ═════════ -->
+<section class="slide" data-sec="6·7차시" data-notes="문제풀이 운영.
+수열은 '항을 몇 개 직접 써 보는' 습관이 결정적이다. Level 1 에서 반드시 a1, a2, a3 를 써 보게 시킬 것.">
+  <h2>6 · 7차시 — 문제풀이 <span class="pg">p.78 ~ 83</span></h2>
+  <div class="body">
+    <table>
+      <tr><th>구성</th><th>쪽</th><th>성격</th><th>수업 운영</th></tr>
+      <tr><td><strong>Level 1</strong> 기초 연습</td><td>78 ~ 79</td>
+        <td>개념 숙지 확인</td><td>앞 세 항을 직접 써 보게 할 것</td></tr>
+      <tr><td><strong>Level 2</strong> 기본 연습</td><td>80 ~ 81</td>
+        <td>기본 응용</td><td>2문항 함께, 나머지 과제</td></tr>
+      <tr><td><strong>Level 3</strong> 실력 완성</td><td>82</td>
+        <td>수학적 사고력</td><td>전체 풀이 해설</td></tr>
+      <tr><td><strong>대표 기출 문제</strong></td><td>83</td>
+        <td>수능·모평 기출</td><td>출제 의도까지 해설</td></tr>
+    </table>
+    <div class="card warm">
+      <span class="tag">이 강의 출제 포인트</span>
+      <p><strong>$S_{n}$ 이 주어지고 $a_{n}$ 을 묻는</strong> 형태, 그리고
+         <strong>등차와 등비가 섞인</strong> 조건에서 일반항을 찾는 형태가 주력입니다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-sec="마무리" data-notes="한 장 정리. 사진을 찍게 한다.
+다음 강(06)에서는 이 합들을 Σ 기호로 다루고, 수열을 정의하는 새로운 방식(귀납적 정의)을 배운다고 예고.">
+  <h2>강 05 핵심 한 장 정리</h2>
+  <div class="body">
+    <div class="cols">
+      <div class="card accent">
+        <span class="tag">등차수열</span>
+        <p style="line-height:2.05">
+          $a_{n}=a+(n-1)d$<br>
+          $2b=a+c$ (등차중항)<br>
+          $S_{n}=\dfrac{n(a+l)}{2}=\dfrac{n\{2a+(n-1)d\}}{2}$<br>
+          $S_{n}=An^{2}+Bn$ 꼴
+        </p>
+      </div>
+      <div class="card good">
+        <span class="tag">등비수열</span>
+        <p style="line-height:2.05">
+          $a_{n}=ar^{\,n-1}$<br>
+          $b^{2}=ac$ (등비중항)<br>
+          $S_{n}=\dfrac{a(1-r^{\,n})}{1-r}\ (r\ne1)$<br>
+          $S_{n}=na\ (r=1)$
+        </p>
+      </div>
+    </div>
+    <div class="card bad">
+      <span class="tag">시험에서 이걸로 틀린다</span>
+      <p>$d$ 를 $n$ 번 더함 &nbsp;·&nbsp; $a_{n}=S_{n}-S_{n-1}$ 에서 $n=1$ 을 확인하지 않음 &nbsp;·&nbsp;
+         등비중항의 부호 하나를 빠뜨림 &nbsp;·&nbsp; $r=1$ 인 경우를 나누지 않음</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-sec="마무리" data-notes="과제와 다음 강 예고.">
+  <h2>과제 &amp; 다음 강</h2>
+  <div class="body">
+    <div class="cols wide-left">
+      <div class="card">
+        <span class="tag">과제</span>
+        <ul style="font-size:25px">
+          <li>유제 1 ~ 10 전체 (p.69 ~ 77)</li>
+          <li>Level 1 기초 연습 (p.78 ~ 79)</li>
+          <li>등차·등비 대비표를 <strong>보지 않고</strong> 다시 만들어 볼 것</li>
+          <li>오답은 <strong>원인을 한 줄</strong>로 적어 올 것</li>
+        </ul>
+      </div>
+      <div class="card good">
+        <span class="tag">다음 강</span>
+        <p><strong>06 수열의 합과 수학적 귀납법</strong> (p.84 ~ 101)</p>
+        <p style="margin-top:14px;color:var(--muted);font-size:24px">
+          합을 $\Sigma$ 기호로 다루고,<br>
+          수열을 정의하는 <strong>새로운 방식</strong>(귀납적 정의)을 배웁니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="chrome">
+  <span class="sec" id="c-sec"></span>
+  <span id="c-title"></span>
+  <span class="sp"></span>
+  <span>2027 EBS 수능특강 수학Ⅰ · 강 05</span>
+  <span id="c-num"></span>
+</div>
+<div id="bar"></div>
+
+</div></div>
+
+<div id="notes"><h4>발표자 노트</h4><div class="n-body" id="n-body"></div></div>
+<div id="overview"></div>
+<div id="help">
+  <kbd>→</kbd> <kbd>Space</kbd> 다음 &nbsp; <kbd>←</kbd> 이전<br>
+  <kbd>N</kbd> 발표자 노트 &nbsp; <kbd>O</kbd> 전체 보기<br>
+  <kbd>F</kbd> 전체 화면 &nbsp; <kbd>B</kbd> 화면 끄기<br>
+  <kbd>Home</kbd> 처음 &nbsp; <kbd>End</kbd> 마지막<br>
+  <kbd>Ctrl</kbd>+<kbd>P</kbd> PDF 로 저장 &nbsp; <kbd>?</kbd> 도움말
+</div>
+<div id="hint"><kbd>?</kbd> 를 누르면 단축키</div>
+
+</body>
+</html>

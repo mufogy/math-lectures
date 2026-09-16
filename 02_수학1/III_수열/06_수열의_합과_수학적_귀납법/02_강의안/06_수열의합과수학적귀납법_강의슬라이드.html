@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>강 06 · 수열의 합과 수학적 귀납법</title>
+
+<!-- 디자인과 동작은 모든 강이 공유합니다. 고치면 전 강에 반영됩니다. -->
+<link rel="stylesheet" href="../../../../00_공통/02_서식_스타일/katex/katex.min.css">
+<link rel="stylesheet" href="../../../../00_공통/02_서식_스타일/slide.css">
+<script defer src="../../../../00_공통/02_서식_스타일/katex/katex.min.js"></script>
+<script defer src="../../../../00_공통/02_서식_스타일/katex/contrib/auto-render.min.js"></script>
+<script defer src="../../../../00_공통/02_서식_스타일/slide.js"></script>
+</head>
+<body>
+
+<div id="viewport"><div id="stage">
+
+<section class="slide cover" data-sec="표지" data-notes="오프닝. 수학Ⅰ의 마지막 강.
+· 앞 강에서는 '규칙이 정해진' 등차·등비만 다뤘다. 이번 강은 그 틀을 벗어난 수열까지 다룬다.
+· Σ 기호에 겁먹는 학생이 많다. '더하라는 명령어일 뿐'이라고 처음부터 못 박을 것.
+· 이 강은 개념이 6개라 8차시로 가장 길다.
+· 교재 p.84~101.">
+  <div class="eyebrow">2027 EBS 수능특강 수학Ⅰ · 강 06</div>
+  <h1 class="title">수열의 합과 수학적 귀납법</h1>
+  <p class="lead" style="margin-top:22px">
+    $\Sigma$ 는 무서운 기호가 아니라 <strong>“더하라”는 명령어</strong>일 뿐입니다.<br>
+    수학Ⅰ의 마지막 강입니다.
+  </p>
+  <div class="meta">
+    <span class="chip">교재 p.84 ~ 101</span>
+    <span class="chip">개념 6차시 + 문제풀이 2차시</span>
+    <span class="chip">35 ~ 42차시</span>
+  </div>
+</section>
+
+<section class="slide" data-sec="오리엔테이션" data-notes="로드맵. 이 강은 크게 두 덩어리다.
+· 1~3차시: 합을 '계산하는' 기술 (Σ, 거듭제곱의 합, 망원급수)
+· 4~6차시: 수열을 '정의하는' 새 방식과 증명법 (귀납적 정의, 수학적 귀납법)
+이 구분을 먼저 말해 두면 학생이 방향을 잃지 않는다.">
+  <h2>이 강의 지도 <span class="pg">p.84 ~ 101</span></h2>
+  <div class="body">
+    <p class="lead">앞 절반은 <strong>합을 계산하는 기술</strong>, 뒤 절반은 <strong>수열을 정의하고 증명하는 법</strong>입니다.</p>
+    <div class="cols">
+      <div class="card accent">
+        <span class="tag">1 ~ 3차시 · 합 계산</span>
+        <p style="font-size:26px;line-height:1.9">
+          ① 합의 기호 $\Sigma$ 와 성질 (p.84~85)<br>
+          ② 자연수의 거듭제곱의 합 (p.86~87)<br>
+          ③ 분수 꼴 수열의 합 (p.88~89)</p>
+      </div>
+      <div class="card good">
+        <span class="tag">4 ~ 6차시 · 정의와 증명</span>
+        <p style="font-size:26px;line-height:1.9">
+          ④ 수열의 귀납적 정의 (p.90~91)<br>
+          ⑤ 귀납적으로 정의된 여러 수열 (p.92~93)<br>
+          ⑥ 수학적 귀납법 (p.94~95)</p>
+      </div>
+    </div>
+    <div class="card warm">
+      <span class="tag">7 · 8차시</span>
+      <p>Level 1 기초 → Level 2 기본 → Level 3 실력 → 대표 기출 (p.96 ~ 101)</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 1차시 ═════════ -->
+<section class="slide section" data-sec="1차시" data-notes="칠판에 a₁+a₂+…+a₁₀₀ 을 쓰고 '이걸 짧게 쓸 방법이 없을까?' 로 시작.">
+  <div class="num">01</div>
+  <h1>합의 기호 $\Sigma$</h1>
+  <p class="lead">$\Sigma$ 는 <strong>“$k$ 를 1부터 $n$ 까지 바꿔 가며 더하라”</strong>는 뜻입니다.</p>
+</section>
+
+<section class="slide" data-sec="1차시" data-notes="영상 (약 45초). Σ 의 의미 → 성질 → 되는 것과 안 되는 것.
+· 앞부분: k 가 '세는 문자'라 다른 글자로 바꿔도 값이 같다는 것.
+· 뒷부분이 핵심: Σ 는 덧셈에만 분배된다. 곱셈·나눗셈에는 분배되지 않는다.
+· 마지막 빨간 문장이 뜨면 정지하고 반례를 하나 들어 줄 것 (예: Σk·k ≠ (Σk)²).">
+  <h2>$\Sigma$ 가 하는 일 <span class="pg">p.84</span></h2>
+  <div class="body">
+    <div class="video-wrap"><video data-src="media/S1Sigma.mp4" controls playsinline preload="metadata"></video></div>
+  </div>
+</section>
+
+<section class="slide" data-sec="1차시" data-notes="정의와 성질 정리.
+· 부분합 (k=m부터 n까지)은 '전체에서 앞부분을 뺀다'로 처리한다는 것을 강조.
+· 성질 ④ Σc = cn 은 '상수를 n번 더한 것'. 학생들이 Σc = c 라고 쓰는 실수를 자주 한다.
+· 안 되는 것(곱·나눗셈 분배)은 반드시 반례로 확인시킬 것.">
+  <h2>정의와 성질 <span class="pg">p.84</span></h2>
+  <div class="body">
+    <div class="formula">
+      $\displaystyle\sum_{k=1}^{n}a_{k}=a_{1}+a_{2}+\cdots+a_{n}$,
+      &nbsp;&nbsp;
+      $\displaystyle\sum_{k=m}^{n}a_{k}=\sum_{k=1}^{n}a_{k}-\sum_{k=1}^{m-1}a_{k}$
+    </div>
+    <div class="cols">
+      <div class="card good">
+        <span class="tag">되는 것</span>
+        <p style="line-height:2.1">
+          $\sum(a_{k}\pm b_{k})=\sum a_{k}\pm\sum b_{k}$<br>
+          $\sum c\,a_{k}=c\sum a_{k}$<br>
+          $\displaystyle\sum_{k=1}^{n}c=cn$</p>
+      </div>
+      <div class="card bad">
+        <span class="tag">안 되는 것</span>
+        <p style="line-height:2.1">
+          $\sum a_{k}b_{k}\ne\left(\sum a_{k}\right)\left(\sum b_{k}\right)$<br>
+          $\sum\dfrac{a_{k}}{b_{k}}\ne\dfrac{\sum a_{k}}{\sum b_{k}}$</p>
+        <p style="color:var(--muted);font-size:22px;margin-top:8px">
+          $\Sigma$ 는 <strong>덧셈에만</strong> 분배됩니다.</p>
+      </div>
+    </div>
+    <div class="card warm">
+      <span class="tag">흔한 실수</span>
+      <p>$\displaystyle\sum_{k=1}^{n}c$ 를 $c$ 라고 쓰는 것. <strong>상수를 $n$ 번 더하므로 $cn$</strong> 입니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 2차시 ═════════ -->
+<section class="slide section" data-sec="2차시" data-notes="'1부터 n까지의 제곱의 합은?' 을 던지고 시작. 1차시에서 배운 Σ 성질만으로는 풀리지 않는다는 것을 확인시킨다.">
+  <div class="num">02</div>
+  <h1>자연수의 거듭제곱의 합</h1>
+  <p class="lead">공식 세 개면 <strong>웬만한 $\Sigma$ 는 다 계산됩니다.</strong></p>
+</section>
+
+<section class="slide" data-sec="2차시" data-notes="영상 (약 40초). 계단 두 벌을 붙이면 n × (n+1) 직사각형이 된다는 시각 증명.
+· 재생 전: '1+2+…+n 을 두 번 더하면 얼마?' 를 묻고 영상에서 답을 찾게 한다.
+· 뒤쪽 제곱·세제곱 공식이 나오면 정지하고 다음 슬라이드로.
+· 제곱의 합은 항등식 (k+1)³-k³ 을 이용한 유도가 교재 p.86 에 있다. 시간이 되면 함께 볼 것.">
+  <h2>직사각형으로 보는 합 <span class="pg">p.86</span></h2>
+  <div class="body">
+    <div class="video-wrap"><video data-src="media/S2PowerSum.mp4" controls playsinline preload="metadata"></video></div>
+  </div>
+</section>
+
+<section class="slide" data-sec="2차시" data-notes="공식 세 개. 반드시 외우게 한다.
+· 세제곱의 합은 '1차 합의 제곱'이라는 예쁜 구조 — 이렇게 기억하면 잊지 않는다.
+· 실전에서는 Σ(ak² + bk + c) 형태로 나온다. 성질로 쪼갠 뒤 공식 세 개를 각각 적용하는 흐름을 몸에 익히게 할 것.">
+  <h2>공식 세 개 <span class="pg">p.86</span></h2>
+  <div class="body">
+    <div class="cols">
+      <div class="card accent">
+        <span class="tag">1차</span>
+        <p style="font-size:30px;margin-top:8px">$\displaystyle\sum_{k=1}^{n}k=\frac{n(n+1)}{2}$</p>
+      </div>
+      <div class="card accent">
+        <span class="tag">2차</span>
+        <p style="font-size:30px;margin-top:8px">$\displaystyle\sum_{k=1}^{n}k^{2}=\frac{n(n+1)(2n+1)}{6}$</p>
+      </div>
+    </div>
+    <div class="formula good">
+      $\displaystyle\sum_{k=1}^{n}k^{3}=\left\{\frac{n(n+1)}{2}\right\}^{2}
+      =\left(\sum_{k=1}^{n}k\right)^{2}$
+      <div style="font-size:23px;color:var(--muted);margin-top:12px">
+        세제곱의 합은 <strong>1차 합의 제곱</strong> — 이렇게 기억하면 잊지 않습니다
+      </div>
+    </div>
+    <div class="card warm">
+      <span class="tag">실전 흐름</span>
+      <p>$\displaystyle\sum(ak^{2}+bk+c)$ 형태로 나옵니다.
+         <strong>성질로 쪼갠 뒤 → 공식 세 개를 각각 적용</strong>하면 끝입니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 3차시 ═════════ -->
+<section class="slide section" data-sec="3차시" data-notes="칠판에 1/(1·2) + 1/(2·3) + … + 1/(n(n+1)) 을 쓰고 '공식이 없는데?' 로 시작.">
+  <div class="num">03</div>
+  <h1>분수 꼴 수열의 합</h1>
+  <p class="lead">쪼개서 늘어놓으면 <strong>가운데가 전부 지워집니다.</strong></p>
+</section>
+
+<section class="slide" data-sec="3차시" data-notes="영상 (약 50초). 부분분수 분해 → 늘어놓기 → 상쇄 → 양 끝만 남음.
+· 상쇄되는 호(arc)가 그려지는 부분에서 정지하고 '다음 항의 앞부분과 만나서 지워지지?' 를 짚는다.
+· 망원경처럼 접힌다고 해서 망원급수(telescoping)라고 부른다고 소개하면 기억에 남는다.
+· 뒤쪽 일반형과 무리식 유리화가 나오면 다음 슬라이드로.">
+  <h2>쪼개면 지워진다 <span class="pg">p.88</span></h2>
+  <div class="body">
+    <div class="video-wrap"><video data-src="media/S3Telescoping.mp4" controls playsinline preload="metadata"></video></div>
+  </div>
+</section>
+
+<section class="slide" data-sec="3차시" data-notes="분해 공식과 대표 네 가지.
+· 핵심 도구는 1/(AB) = 1/(B-A) · (1/A - 1/B) 하나뿐. 나머지는 여기서 파생된다.
+· 분모 차이가 1이 아니면 계수 1/(B-A) 를 반드시 챙겨야 한다 — 여기서 많이 틀린다.
+· 무리식은 유리화하면 같은 꼴이 된다는 점을 연결시킬 것.">
+  <h2>분해 공식과 대표 유형 <span class="pg">p.88</span></h2>
+  <div class="body">
+    <div class="formula">
+      $\dfrac{1}{AB}=\dfrac{1}{B-A}\left(\dfrac{1}{A}-\dfrac{1}{B}\right)\quad(A\ne B)$
+    </div>
+    <table style="font-size:22px">
+      <tr><th style="width:46%">일반항</th><th>합</th></tr>
+      <tr><td>$\dfrac{1}{k(k+1)}$</td><td>$1-\dfrac{1}{n+1}$</td></tr>
+      <tr><td>$\dfrac{1}{(2k-1)(2k+1)}$</td><td>$\dfrac12\left(1-\dfrac{1}{2n+1}\right)$</td></tr>
+      <tr><td>$\dfrac{1}{k(k+2)}$</td><td>$\dfrac12\left(1+\dfrac12-\dfrac{1}{n+1}-\dfrac{1}{n+2}\right)$</td></tr>
+      <tr><td>$\dfrac{1}{\sqrt{k+1}+\sqrt{k}}$</td><td>$\sqrt{n+1}-1$ &nbsp;<span style="color:var(--muted)">(유리화)</span></td></tr>
+    </table>
+    <div class="card bad">
+      <span class="tag">여기서 틀린다</span>
+      <p>분모의 차이가 $1$ 이 아니면 <strong>계수 $\dfrac{1}{B-A}$ 를 빠뜨리는 것</strong>.<br>
+         $\dfrac{1}{k(k+2)}$ 는 차이가 $2$ 이므로 앞에 $\dfrac12$ 이 붙습니다.
+         세 번째 유형은 남는 항이 <strong>네 개</strong>라는 것도 주의하세요.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 4차시 ═════════ -->
+<section class="slide section" data-sec="4차시" data-notes="'일반항을 안 알려 주고 수열을 정의할 수 있을까?' 로 시작. 출발점 + 다음 만드는 법 두 가지면 된다는 것을 끌어낸다.">
+  <div class="num">04</div>
+  <h1>수열의 귀납적 정의</h1>
+  <p class="lead">출발점과 <strong>“다음을 만드는 법”</strong> 두 가지면 수열이 정해집니다.</p>
+</section>
+
+<section class="slide" data-sec="4차시" data-notes="영상 (약 45초). a₁=2, a_(n+1)=a_n+3 을 실제로 굴려 보고 등차수열임을 확인 → 일반항.
+· 재생 전: '이 둘만 알면 100번째 항도 알 수 있을까?' 발문.
+· 뒤쪽 네 가지 형태 표가 뜨면 정지하고 다음 슬라이드로.">
+  <h2>실제로 굴려 보기 <span class="pg">p.90</span></h2>
+  <div class="body">
+    <div class="video-wrap"><video data-src="media/S4Recursive.mp4" controls playsinline preload="metadata"></video></div>
+  </div>
+</section>
+
+<section class="slide" data-sec="4차시" data-notes="네 가지 형태.
+· 이웃한 항의 '차'가 일정하면 등차, '비'가 일정하면 등비. 이 판단이 전부다.
+· 중항 형태(2a_(n+1) = a_n + a_(n+2))는 한 번 더 꼬아 낸 것일 뿐, 결국 차가 일정하다는 뜻.
+· 문제에서 이 네 형태 중 하나가 보이면 즉시 등차/등비 공식으로 넘어가면 된다.">
+  <h2>알아봐야 할 네 가지 형태 <span class="pg">p.90</span></h2>
+  <div class="body">
+    <table>
+      <tr><th style="width:40%">관계식</th><th>정체</th><th>바로 쓸 것</th></tr>
+      <tr><td>$a_{n+1}=a_{n}+d$</td><td>등차수열</td><td>$a_{n}=a_{1}+(n-1)d$</td></tr>
+      <tr><td>$a_{n+1}=r\,a_{n}$</td><td>등비수열</td><td>$a_{n}=a_{1}r^{\,n-1}$</td></tr>
+      <tr><td>$2a_{n+1}=a_{n}+a_{n+2}$</td><td>등차수열 (등차중항)</td><td>공차 $=a_{2}-a_{1}$</td></tr>
+      <tr><td>$a_{n+1}^{\,2}=a_{n}a_{n+2}$</td><td>등비수열 (등비중항)</td><td>공비 $=\dfrac{a_{2}}{a_{1}}$</td></tr>
+    </table>
+    <div class="card good">
+      <span class="tag">판단 기준 한 줄</span>
+      <p>이웃한 항의 <strong>차가 일정하면 등차</strong>, <strong>비가 일정하면 등비</strong>.
+         중항 형태는 이것을 한 번 꼬아 쓴 것일 뿐입니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 5차시 ═════════ -->
+<section class="slide section" data-sec="5차시" data-notes="'등차도 등비도 아니면 어떡하지?' 로 시작. 답은 '그냥 대입해 본다'.">
+  <div class="num">05</div>
+  <h1>귀납적으로 정의된 여러 수열</h1>
+  <p class="lead">등차도 등비도 아니면 — <strong>그냥 대입해서 굴려 봅니다.</strong></p>
+</section>
+
+<section class="slide" data-sec="5차시" data-notes="영상 (약 35초). a₁=12, a_(n+1)=a_n/(n+1) 에서 a₅ 를 직접 대입해 구한다.
+· 이 차시의 메시지는 단순하다: 겁먹지 말고 n=1,2,3 을 넣어 보라.
+· 특정 항을 묻는 문제는 대부분 대입이 가장 빠르다.">
+  <h2>막히면 대입한다 <span class="pg">p.92</span></h2>
+  <div class="body">
+    <div class="video-wrap"><video data-src="media/S5RecurTypes.mp4" controls playsinline preload="metadata"></video></div>
+  </div>
+</section>
+
+<section class="slide" data-sec="5차시" data-notes="접근 전략 정리.
+· 특정 항을 물으면 → 대입
+· 일반항을 물으면 → 계차를 보거나, 변형해서 등차·등비로 만든다
+· a_(n+1) = pa_n + q 형태는 양변에 같은 수를 더해 등비로 바꾸는 유형. 수능특강 Level 3 단골.
+시간이 부족하면 '대입'만 확실히 시키고 나머지는 문제풀이 차시로 넘겨도 된다.">
+  <h2>무엇을 묻느냐에 따라 <span class="pg">p.92</span></h2>
+  <div class="body">
+    <div class="cols">
+      <div class="card accent">
+        <span class="tag">특정 항을 묻는다면</span>
+        <p><strong>그냥 대입합니다.</strong><br>
+           $n=1,\ 2,\ 3,\ \cdots$ 을 차례로 넣어
+           $a_{2},\ a_{3},\ \cdots$ 를 구해 올라갑니다.</p>
+        <p style="color:var(--muted);font-size:23px;margin-top:12px">
+          대부분 이 방법이 가장 빠릅니다.</p>
+      </div>
+      <div class="card good">
+        <span class="tag">일반항을 묻는다면</span>
+        <p>① 이웃한 항의 차·비가 일정한지 본다<br>
+           ② $a_{n+1}-a_{n}$ 이 규칙적이면 <strong>계차</strong>를 이용<br>
+           ③ $a_{n+1}=pa_{n}+q$ 는 변형해서 등비로</p>
+      </div>
+    </div>
+    <div class="card warm">
+      <span class="tag">$a_{n+1}=pa_{n}+q$ 다루는 법</span>
+      <p>양변에 적당한 수 $c$ 를 더해 $a_{n+1}+c=p(a_{n}+c)$ 꼴로 만들면,
+         $\{a_{n}+c\}$ 가 <strong>공비 $p$ 인 등비수열</strong>이 됩니다. Level 3 단골 유형입니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 6차시 ═════════ -->
+<section class="slide section" data-sec="6차시" data-notes="'모든 자연수에 대해 성립한다는 걸 어떻게 증명하지? 무한히 많은데.' 로 시작. 도미노 이야기를 꺼낸다.">
+  <div class="num">06</div>
+  <h1>수학적 귀납법</h1>
+  <p class="lead">무한히 많은 명제를 <strong>도미노 두 개</strong>로 증명합니다.</p>
+</section>
+
+<section class="slide" data-sec="6차시" data-notes="영상 (약 45초). 도미노가 연쇄적으로 넘어가는 시각화 → 실제 증명 뼈대.
+· 재생 전: '첫 번째를 넘어뜨리는 것'과 '앞이 넘어지면 뒤도 넘어진다는 보장' 두 가지가 왜 둘 다 필요한지 물어 둔다.
+· 하나만 있으면 안 되는 이유를 반드시 짚을 것 — ①만 있으면 두 번째부터 모르고, ②만 있으면 시작이 없다.">
+  <h2>도미노 두 개 <span class="pg">p.94</span></h2>
+  <div class="body">
+    <div class="video-wrap"><video data-src="media/S6Induction.mp4" controls playsinline preload="metadata"></video></div>
+  </div>
+</section>
+
+<section class="slide" data-sec="6차시" data-notes="증명의 형식. 답안 작성 요령까지 알려 준다.
+· 빈칸 채우기 형태로 자주 출제된다(교재 예제6이 그렇다). 그래서 '형식'을 정확히 아는 것이 중요.
+· n=k 일 때의 식에 무엇을 더하거나 곱해서 n=k+1 의 식을 만드는지 — 그 '연결 고리'를 찾는 것이 문제의 핵심.
+· m 이상에서만 성립하는 명제는 출발점을 n=m 으로 잡는다는 변형도 언급.">
+  <h2>증명의 형식 <span class="pg">p.94</span></h2>
+  <div class="body">
+    <div class="cols">
+      <div class="card accent">
+        <span class="tag">① 출발</span>
+        <p>$n=1$ 일 때 명제가 성립함을 <strong>직접 확인</strong>한다</p>
+      </div>
+      <div class="card good">
+        <span class="tag">② 연결</span>
+        <p>$n=k$ 일 때 성립한다고 <strong>가정</strong>하면<br>
+           $n=k+1$ 일 때도 성립함을 <strong>보인다</strong></p>
+      </div>
+    </div>
+    <div class="formula good">
+      ① 과 ② 가 모두 성립하면 — <strong>모든 자연수 $n$ 에 대하여 성립</strong>
+    </div>
+    <div class="card bad">
+      <span class="tag">시험에서는 이렇게 나온다</span>
+      <p>증명 과정의 <strong>빈칸을 채우는</strong> 형태가 대부분입니다.
+         $n=k$ 의 식에서 $n=k+1$ 의 식으로 가려면
+         <strong>무엇을 더하거나 곱해야 하는지</strong> — 그 연결 고리를 찾는 것이 문제의 전부입니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 7·8차시 / 마무리 ═════════ -->
+<section class="slide" data-sec="7·8차시" data-notes="문제풀이 운영. 수학Ⅰ의 마지막 문제풀이 차시이므로 총괄평가로 마무리하는 것을 권한다.">
+  <h2>7 · 8차시 — 문제풀이 <span class="pg">p.96 ~ 101</span></h2>
+  <div class="body">
+    <table>
+      <tr><th>구성</th><th>쪽</th><th>성격</th><th>수업 운영</th></tr>
+      <tr><td><strong>Level 1</strong> 기초 연습</td><td>96 ~ 97</td>
+        <td>개념 숙지 확인</td><td>개별 풀이 → 짝 점검</td></tr>
+      <tr><td><strong>Level 2</strong> 기본 연습</td><td>98 ~ 99</td>
+        <td>기본 응용</td><td>2문항 함께, 나머지 과제</td></tr>
+      <tr><td><strong>Level 3</strong> 실력 완성</td><td>100</td>
+        <td>수학적 사고력</td><td>전체 풀이 해설</td></tr>
+      <tr><td><strong>대표 기출 문제</strong></td><td>101</td>
+        <td>수능·모평 기출</td><td>출제 의도까지 해설</td></tr>
+    </table>
+    <div class="card warm">
+      <span class="tag">이 강의 출제 포인트</span>
+      <p><strong>$\Sigma$ 계산 + 부분분수</strong>가 결합된 형태, 그리고
+         <strong>귀납적 정의에서 특정 항을 구하는</strong> 형태가 주력입니다.
+         수학적 귀납법은 빈칸 채우기로 나옵니다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-sec="마무리" data-notes="한 장 정리. 사진을 찍게 한다.">
+  <h2>강 06 핵심 한 장 정리</h2>
+  <div class="body">
+    <div class="cols">
+      <div class="card accent">
+        <span class="tag">합 계산</span>
+        <p style="line-height:2.05">
+          $\sum_{k=1}^{n}k=\dfrac{n(n+1)}{2}$<br>
+          $\sum_{k=1}^{n}k^{2}=\dfrac{n(n+1)(2n+1)}{6}$<br>
+          $\sum_{k=1}^{n}k^{3}=\left\{\dfrac{n(n+1)}{2}\right\}^{2}$<br>
+          $\dfrac{1}{AB}=\dfrac{1}{B-A}\left(\dfrac1A-\dfrac1B\right)$
+        </p>
+      </div>
+      <div class="card good">
+        <span class="tag">정의와 증명</span>
+        <p style="line-height:2.05">
+          $a_{n+1}=a_{n}+d$ → 등차<br>
+          $a_{n+1}=ra_{n}$ → 등비<br>
+          $a_{n+1}=pa_{n}+q$ → 변형해 등비로<br>
+          귀납법 : $n=1$ 확인 → $k$ 가정 → $k+1$ 증명
+        </p>
+      </div>
+    </div>
+    <div class="card bad">
+      <span class="tag">시험에서 이걸로 틀린다</span>
+      <p>$\Sigma$ 를 곱셈에 분배 &nbsp;·&nbsp; $\sum c$ 를 $c$ 로 씀 &nbsp;·&nbsp;
+         부분분수에서 계수 $\frac{1}{B-A}$ 누락 &nbsp;·&nbsp; 귀납법에서 ①을 빠뜨림</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-sec="마무리" data-notes="수학Ⅰ 전 과정 마무리.
+· 6개 강을 한 줄씩 되짚어 주면 학생들이 전체 그림을 갖게 된다.
+· 이후 수학Ⅱ로 넘어가거나, 총괄평가 후 취약 단원을 복습하는 계획을 안내할 것.">
+  <h2>수학Ⅰ 을 마치며</h2>
+  <div class="body">
+    <div class="cols">
+      <div class="card accent">
+        <span class="tag">지수 · 로그 · 삼각</span>
+        <p style="line-height:1.95">
+          <strong>01</strong> 지수와 로그 — 같은 관계의 두 언어<br>
+          <strong>02</strong> 지수·로그함수 — 그 관계의 그래프<br>
+          <strong>03</strong> 삼각함수 — 단위원과 주기<br>
+          <strong>04</strong> 사인·코사인법칙 — 변과 각의 환전소</p>
+      </div>
+      <div class="card good">
+        <span class="tag">수열</span>
+        <p style="line-height:1.95">
+          <strong>05</strong> 등차·등비 — 일반항과 합<br>
+          <strong>06</strong> $\Sigma$ 와 귀납법 — 합의 기술, 정의와 증명</p>
+        <p style="margin-top:16px;color:var(--muted);font-size:23px">
+          총 42차시 · 교재 p.4 ~ 101</p>
+      </div>
+    </div>
+    <div class="card warm">
+      <span class="tag">다음 단계</span>
+      <p>총괄평가로 취약 단원을 확인한 뒤, <strong>수학Ⅱ</strong>(함수의 극한과 연속 → 미분 → 적분)로 넘어갑니다.
+         오답노트에 쌓인 유형을 먼저 정리하고 시작하세요.</p>
+    </div>
+  </div>
+</section>
+
+<div class="chrome">
+  <span class="sec" id="c-sec"></span>
+  <span id="c-title"></span>
+  <span class="sp"></span>
+  <span>2027 EBS 수능특강 수학Ⅰ · 강 06</span>
+  <span id="c-num"></span>
+</div>
+<div id="bar"></div>
+
+</div></div>
+
+<div id="notes"><h4>발표자 노트</h4><div class="n-body" id="n-body"></div></div>
+<div id="overview"></div>
+<div id="help">
+  <kbd>→</kbd> <kbd>Space</kbd> 다음 &nbsp; <kbd>←</kbd> 이전<br>
+  <kbd>N</kbd> 발표자 노트 &nbsp; <kbd>O</kbd> 전체 보기<br>
+  <kbd>F</kbd> 전체 화면 &nbsp; <kbd>B</kbd> 화면 끄기<br>
+  <kbd>Home</kbd> 처음 &nbsp; <kbd>End</kbd> 마지막<br>
+  <kbd>Ctrl</kbd>+<kbd>P</kbd> PDF 로 저장 &nbsp; <kbd>?</kbd> 도움말
+</div>
+<div id="hint"><kbd>?</kbd> 를 누르면 단축키</div>
+
+</body>
+</html>

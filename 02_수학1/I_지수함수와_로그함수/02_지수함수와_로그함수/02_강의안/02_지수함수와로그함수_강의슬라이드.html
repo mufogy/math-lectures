@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>강 02 · 지수함수와 로그함수</title>
+
+<!-- 디자인과 동작은 모든 강이 공유합니다. 고치면 전 강에 반영됩니다. -->
+<link rel="stylesheet" href="../../../../00_공통/02_서식_스타일/katex/katex.min.css">
+<link rel="stylesheet" href="../../../../00_공통/02_서식_스타일/slide.css">
+<script defer src="../../../../00_공통/02_서식_스타일/katex/katex.min.js"></script>
+<script defer src="../../../../00_공통/02_서식_스타일/katex/contrib/auto-render.min.js"></script>
+<script defer src="../../../../00_공통/02_서식_스타일/slide.js"></script>
+</head>
+<body>
+
+<div id="viewport"><div id="stage">
+
+<section class="slide cover" data-sec="표지" data-notes="강01의 식들이 이번 강에서 전부 '그림'이 된다는 한 문장으로 연다.
+· 지난 강 복습 질문: 'a^x = N 을 로그로 바꾸면?' → x = log_a N
+· 이번 강의 한 줄: 그 관계를 좌표평면에 올리면 지수함수와 로그함수가 되고, 둘은 y=x 대칭이다.
+· 교재 p.20~35, 7차시(개념 5 + 문제풀이 2).">
+  <div class="eyebrow">2027 EBS 수능특강 수학Ⅰ · 강 02</div>
+  <h1 class="title">지수함수와 로그함수</h1>
+  <p class="lead" style="margin-top:22px">
+    강 01의 식들이 이번 강에서 <strong>그래프</strong>가 됩니다.<br>
+    지수함수와 로그함수는 <strong>$y=x$ 에 대해 서로를 비추는 거울</strong>입니다.
+  </p>
+  <div class="meta">
+    <span class="chip">교재 p.20 ~ 35</span>
+    <span class="chip">개념 5차시 + 문제풀이 2차시</span>
+    <span class="chip">8 ~ 14차시</span>
+  </div>
+</section>
+
+<section class="slide" data-sec="오리엔테이션" data-notes="로드맵. 다섯 개념이 '지수 → 로그'로 두 번 반복되는 구조임을 먼저 보여 준다.
+· 1·2차시에서 지수함수로 배운 것을 3·4차시에서 로그함수로 그대로 되풀이한다고 예고하면 학생 부담이 절반으로 준다.
+· 5차시는 그 그래프 지식을 방정식·부등식으로 쓰는 시간.">
+  <h2>이 강의 지도 <span class="pg">p.20 ~ 35</span></h2>
+  <div class="body">
+    <p class="lead">같은 이야기를 <strong>지수 쪽에서 한 번, 로그 쪽에서 한 번</strong> 합니다.</p>
+    <div class="roadmap">
+      <div class="rm"><div class="n">1차시</div><div class="t">지수함수의 그래프</div>
+        <div>$y=a^{x}$ 의 모양과 성질</div><div class="p">p.20 ~ 21</div></div>
+      <div class="rm"><div class="n">2차시</div><div class="t">이동과 최대·최소</div>
+        <div>점근선이 같이 움직인다</div><div class="p">p.22 ~ 23</div></div>
+      <div class="rm"><div class="n">3차시</div><div class="t">로그함수의 그래프</div>
+        <div>지수함수의 역함수</div><div class="p">p.24 ~ 25</div></div>
+      <div class="rm"><div class="n">4차시</div><div class="t">이동과 진수 조건</div>
+        <div>조건도 함께 옮겨간다</div><div class="p">p.26 ~ 27</div></div>
+      <div class="rm"><div class="n">5차시</div><div class="t">방정식과 부등식</div>
+        <div>밑이 부등호를 뒤집는다</div><div class="p">p.28 ~ 29</div></div>
+    </div>
+    <div class="card warm">
+      <span class="tag">6 · 7차시</span>
+      <p>Level 1 기초 → Level 2 기본 → Level 3 실력 → 대표 기출 (p.30 ~ 35)</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 1차시 ═════════ -->
+<section class="slide section" data-sec="1차시" data-notes="칠판에 y=2^x 의 표(x=-2..3)를 만들어 점을 찍게 한 뒤 시작한다.">
+  <div class="num">01</div>
+  <h1>지수함수의 그래프</h1>
+  <p class="lead">밑 $a$ 가 <strong>1보다 큰가 작은가</strong> — 그 하나가 모든 것을 가른다.</p>
+</section>
+
+<section class="slide" data-sec="1차시" data-notes="정의 슬라이드.
+· a > 0 인 이유: 강01에서 유리수 지수를 정의할 때 붙은 조건 그대로.
+· a ≠ 1 인 이유: 1^x 은 항상 1이라 함수이긴 하지만 상수함수라 지수함수로 보지 않는다.
+발문: '왜 a = 1 은 빼 놓았을까?'">
+  <h2>지수함수의 뜻 <span class="pg">p.20</span></h2>
+  <div class="body">
+    <div class="formula big">
+      $y=a^{x}\quad(a>0,\ a\ne 1)$
+      <div style="font-size:24px;color:var(--muted);margin-top:14px">
+        $a$ 를 밑으로 하는 <strong>지수함수</strong>
+      </div>
+    </div>
+    <div class="cols">
+      <div class="card bad">
+        <span class="tag">왜 $a>0$ 인가</span>
+        <p>밑이 음수면 $(-2)^{1/2}=\sqrt{-2}$ 처럼 실수가 아닌 값이 나옵니다.
+           강 01의 유리수 지수 조건과 같습니다.</p>
+      </div>
+      <div class="card bad">
+        <span class="tag">왜 $a\ne 1$ 인가</span>
+        <p>$1^{x}$ 은 $x$ 가 무엇이든 항상 $1$ — 상수함수가 되어
+           지수함수의 성질을 하나도 갖지 못합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-sec="1차시" data-notes="영상 (약 30초). 재생 전 예고:
+· 파란 곡선이 y=a^x. 오른쪽 위 숫자가 밑 a.
+· a 를 2에서 1 쪽으로, 다시 0.4로 내린다. 곡선이 어느 순간 방향을 바꾸는지 보게 한다.
+멈춤 지점: a 가 1.25 근처일 때 정지하고 '여기서 더 내리면 어떻게 될까?' 발문.">
+  <h2>밑 $a$ 를 움직여 보기 <span class="pg">p.20</span></h2>
+  <div class="body">
+    <div class="video-wrap"><video data-src="media/S1ExpGraph.mp4" controls playsinline preload="metadata"></video></div>
+  </div>
+</section>
+
+<section class="slide" data-sec="1차시" data-notes="성질 정리. 표를 통째로 외우게 하지 말고, 영상에서 본 '방향이 뒤집히는 순간'으로 기억하게 한다.
+자주 하는 실수: 치역을 실수 전체라고 쓰는 것. a^x 은 절대 0 이하가 되지 않는다.
+참고로 a>b>1 일 때 x>0 이면 a^x > b^x, x<0 이면 a^x < b^x — 그래프가 (0,1)에서 교차하기 때문.">
+  <h2>지수함수의 성질 <span class="pg">p.20</span></h2>
+  <div class="body">
+    <div class="cols">
+      <div class="card accent">
+        <span class="tag">$a>1$</span>
+        <p><strong>증가함수</strong> — $x$ 가 커지면 $y$ 도 커진다</p>
+      </div>
+      <div class="card warm">
+        <span class="tag">$0&lt;a&lt;1$</span>
+        <p><strong>감소함수</strong> — $x$ 가 커지면 $y$ 는 작아진다</p>
+      </div>
+    </div>
+    <table>
+      <tr><th style="width:24%">정의역</th><td>실수 전체</td>
+          <th style="width:24%">치역</th><td>$\{y\mid y>0\}$</td></tr>
+      <tr><th>지나는 점</th><td>$(0,\,1)$</td>
+          <th>점근선</th><td>$x$ 축 (직선 $y=0$)</td></tr>
+    </table>
+    <div class="card bad">
+      <span class="tag">자주 하는 실수</span>
+      <p>치역을 실수 전체로 쓰는 것. $a^{x}$ 은 <strong>절대 $0$ 이하가 되지 않습니다.</strong>
+         그래서 점근선에 한없이 가까워질 뿐 닿지 않습니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 2차시 ═════════ -->
+<section class="slide section" data-sec="2차시" data-notes="칠판에 y=2^x 을 그려 놓고 '이걸 오른쪽으로 2, 위로 1 옮기면 식이 어떻게 될까?' 로 시작.">
+  <div class="num">02</div>
+  <h1>이동과 최대·최소</h1>
+  <p class="lead">그래프를 옮기면 <strong>점근선도 같이 따라간다</strong> — 이걸 놓쳐서 틀린다.</p>
+</section>
+
+<section class="slide" data-sec="2차시" data-notes="평행이동. x 는 '빼고' y 는 '더한다'는 부호 규칙을 강조.
+발문: 'x-m 인데 왜 오른쪽으로 m 이지?' → x 자리에 m 을 넣어야 원래의 x=0 자리가 되므로.
+점근선 y=n 과 지나는 점 (m, n+1) 은 문제에서 그대로 묻는다.">
+  <h2>평행이동 <span class="pg">p.22</span></h2>
+  <div class="body">
+    <div class="formula big">
+      $y=a^{x}\ \longrightarrow\ y=a^{\,x-m}+n$
+      <div style="font-size:24px;color:var(--muted);margin-top:14px">
+        $x$ 축으로 $m$, $y$ 축으로 $n$ 만큼
+      </div>
+    </div>
+    <div class="cols">
+      <div class="card accent">
+        <span class="tag">따라 움직이는 것</span>
+        <p>점근선 : $y=0\ \rightarrow\ y=n$<br>
+           지나는 점 : $(0,1)\ \rightarrow\ (m,\ n+1)$</p>
+      </div>
+      <div class="card warm">
+        <span class="tag">부호 규칙</span>
+        <p>$x$ 는 <strong>빼고</strong>, $y$ 는 <strong>더한다.</strong><br>
+           오른쪽으로 $2$ 이동 → $a^{x-2}$</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-sec="2차시" data-notes="영상 (약 45초). 앞부분은 평행이동, 뒷부분은 최대·최소.
+· 빨간 점선이 점근선. 그래프를 옮길 때 점선이 같이 올라가는 것을 반드시 짚는다.
+· 뒤쪽 최대·최소 표가 뜨면 정지하고 다음 슬라이드로.">
+  <h2>점근선이 따라가는 모습 <span class="pg">p.22</span></h2>
+  <div class="body">
+    <div class="video-wrap"><video data-src="media/S2ExpTransform.mp4" controls playsinline preload="metadata"></video></div>
+  </div>
+</section>
+
+<section class="slide" data-sec="2차시" data-notes="대칭이동과 최대·최소.
+대칭이동은 '무엇에 마이너스를 붙이나'로 기억: x축 대칭 → y에, y축 대칭 → x에, 원점 대칭 → 둘 다.
+최대·최소의 핵심: 지수함수는 단조함수라 구간 안에 극값이 없다 → 양 끝 두 값만 비교하면 끝. 이차함수와 다른 점이라고 대비시킬 것.">
+  <h2>대칭이동과 최대·최소 <span class="pg">p.22</span></h2>
+  <div class="body">
+    <div class="cols wide-left">
+      <div class="card">
+        <span class="tag">대칭이동</span>
+        <table style="font-size:23px">
+          <tr><th>$x$ 축</th><td>$y=-a^{x}$</td></tr>
+          <tr><th>$y$ 축</th><td>$y=a^{-x}=\left(\dfrac1a\right)^{x}$</td></tr>
+          <tr><th>원점</th><td>$y=-\left(\dfrac1a\right)^{x}$</td></tr>
+        </table>
+      </div>
+      <div class="card good">
+        <span class="tag">최대 · 최소</span>
+        <p>정의역 $\{x\mid m\le x\le n\}$ 에서</p>
+        <p style="margin-top:10px">
+          $a>1$ : $x=m$ 최소, $x=n$ 최대<br>
+          $0&lt;a&lt;1$ : $x=m$ 최대, $x=n$ 최소</p>
+        <p style="color:var(--muted);font-size:23px;margin-top:12px">
+          <strong>양 끝 두 값만</strong> 비교하면 됩니다.</p>
+      </div>
+    </div>
+    <div class="card warm">
+      <span class="tag">이차함수와 다른 점</span>
+      <p>이차함수는 구간 안에 꼭짓점이 있으면 거기서 극값이 납니다.
+         지수함수는 <strong>단조함수</strong>라 구간 안에 극값이 생기지 않습니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 3차시 ═════════ -->
+<section class="slide section" data-sec="3차시" data-notes="칠판에 y=2^x 그래프를 그려 놓고 y=x 를 점선으로 긋는다. '이 선에 대고 접으면 무슨 그래프가 될까?'">
+  <div class="num">03</div>
+  <h1>로그함수의 그래프</h1>
+  <p class="lead">지수함수를 $y=x$ 에 대해 <strong>접은 것</strong> — 그게 전부입니다.</p>
+</section>
+
+<section class="slide" data-sec="3차시" data-notes="역함수 유도. 세 줄이면 끝난다.
+1) y = a^x 은 일대일대응이므로 역함수가 존재한다
+2) 로그의 정의로 x = log_a y
+3) x 와 y 를 바꾸면 y = log_a x
+'역함수를 구한다 = x와 y를 바꿔 쓴다'는 절차를 다시 확인시킬 것.">
+  <h2>로그함수의 뜻 <span class="pg">p.24</span></h2>
+  <div class="body">
+    <ol class="steps">
+      <li>$y=a^{x}$ 은 실수 전체에서 양의 실수 전체로의 <strong>일대일대응</strong> → 역함수가 존재</li>
+      <li>로그의 정의에 의하여 $\;y=a^{x}\iff x=\log_{a}y$</li>
+      <li>$x$ 와 $y$ 를 서로 바꾸면 &nbsp; $y=\log_{a}x\quad(a>0,\ a\ne1)$</li>
+    </ol>
+    <div class="formula good">
+      $y=a^{x}$ 와 $y=\log_{a}x$ 는 <strong>서로 역함수</strong>
+      &nbsp;→&nbsp; 두 그래프는 직선 $y=x$ 에 대하여 대칭
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-sec="3차시" data-notes="영상 (약 30초). 지수함수 곡선이 y=x 에 대해 접혀 로그함수가 되는 장면.
+· 대응하는 점 (1,2) ↔ (2,1) 을 보여 줄 때 정지하고 '좌표가 뒤바뀌었지?' 발문.
+· 오른쪽 표가 뜨면 다음 슬라이드로.">
+  <h2>$y=x$ 에 대해 접어 보기 <span class="pg">p.24</span></h2>
+  <div class="body">
+    <div class="video-wrap"><video data-src="media/S3LogGraph.mp4" controls playsinline preload="metadata"></video></div>
+  </div>
+</section>
+
+<section class="slide" data-sec="3차시" data-notes="성질 대비표. 지수함수와 나란히 놓고 '정의역과 치역이 서로 뒤바뀌었다'를 한눈에 보게 한다.
+이 대비가 이번 강 전체에서 가장 중요한 한 장. 학생들에게 사진을 찍게 한다.">
+  <h2>지수함수와 로그함수 — 뒤바뀐 짝 <span class="pg">p.24</span></h2>
+  <div class="body">
+    <table>
+      <tr><th style="width:22%"></th><th>$y=a^{x}$</th><th>$y=\log_{a}x$</th></tr>
+      <tr><th>정의역</th><td>실수 전체</td><td class="no">$x>0$</td></tr>
+      <tr><th>치역</th><td class="no">$y>0$</td><td>실수 전체</td></tr>
+      <tr><th>지나는 점</th><td>$(0,\,1)$</td><td>$(1,\,0)$</td></tr>
+      <tr><th>점근선</th><td>$x$ 축 ($y=0$)</td><td>$y$ 축 ($x=0$)</td></tr>
+      <tr><th>$a>1$</th><td>증가</td><td>증가</td></tr>
+      <tr><th>$0&lt;a&lt;1$</th><td>감소</td><td>감소</td></tr>
+    </table>
+    <div class="card good">
+      <span class="tag">한 줄 정리</span>
+      <p>역함수이므로 <strong>정의역과 치역이 통째로 맞바뀌고</strong>, 지나는 점의 좌표도 뒤집힙니다.
+         증가·감소 방향만 그대로입니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 4차시 ═════════ -->
+<section class="slide section" data-sec="4차시" data-notes="칠판에 y = log₂(x-2)+1 을 쓰고 '이 함수의 정의역은?' 으로 시작. 진수 조건이 이동한다는 것을 체감시킨다.">
+  <div class="num">04</div>
+  <h1>로그함수의 이동</h1>
+  <p class="lead">그래프만 옮겨가는 게 아니라 <strong>진수 조건도 함께</strong> 옮겨갑니다.</p>
+</section>
+
+<section class="slide" data-sec="4차시" data-notes="평행이동과 대칭이동.
+· y=x 대칭이 하나 더 있다는 점이 지수함수와 다르다 → 역함수인 지수함수로 돌아간다.
+· 진수 조건 x > m 은 시험에서 정의역을 묻는 형태로 반드시 나온다. 빨간 카드를 강조.">
+  <h2>평행이동과 대칭이동 <span class="pg">p.26</span></h2>
+  <div class="body">
+    <div class="formula big">
+      $y=\log_{a}(x-m)+n$
+      <div style="font-size:24px;color:var(--muted);margin-top:14px">
+        점근선 $x=m$ &nbsp;·&nbsp; 지나는 점 $(1+m,\ n)$
+      </div>
+    </div>
+    <div class="cols wide-left">
+      <div class="card">
+        <span class="tag">대칭이동</span>
+        <table style="font-size:23px">
+          <tr><th>$x$ 축</th><td>$y=-\log_{a}x$</td></tr>
+          <tr><th>$y$ 축</th><td>$y=\log_{a}(-x)$</td></tr>
+          <tr><th>원점</th><td>$y=-\log_{a}(-x)$</td></tr>
+          <tr><th>$y=x$</th><td>$y=a^{x}$ &nbsp;<span style="color:var(--muted)">(역함수)</span></td></tr>
+        </table>
+      </div>
+      <div class="card bad">
+        <span class="tag">진수 조건도 이동</span>
+        <p>$y=\log_{a}x$ 의 조건은 $x>0$<br>
+           $y=\log_{a}(x-m)$ 의 조건은 <strong>$x>m$</strong></p>
+        <p style="margin-top:12px;color:var(--muted);font-size:23px">
+          정의역을 묻는 문제는 여기서 갈립니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-sec="4차시" data-notes="영상 (약 40초). 왼쪽 위의 빨간 'x > m' 이 그래프와 함께 변하는 것이 핵심.
+멈춤 지점: m 이 2로 옮겨간 순간 정지하고 '이제 x=1 을 넣을 수 있을까?' 발문 → 진수가 음수가 되어 불가능.">
+  <h2>진수 조건이 따라가는 모습 <span class="pg">p.26</span></h2>
+  <div class="body">
+    <div class="video-wrap"><video data-src="media/S4LogTransform.mp4" controls playsinline preload="metadata"></video></div>
+  </div>
+</section>
+
+<section class="slide" data-sec="4차시" data-notes="최대·최소. 지수함수와 완전히 같은 논리이므로 빠르게 넘어간다.
+차이점 하나만: 정의역이 0 < m ≤ x ≤ n 으로 양수 범위여야 한다는 것.">
+  <h2>로그함수의 최대·최소 <span class="pg">p.26</span></h2>
+  <div class="body">
+    <p class="lead">정의역 $\{x\mid m\le x\le n\}$ &nbsp;(단, $0&lt;m&lt;n$)</p>
+    <div class="cols">
+      <div class="card accent">
+        <span class="tag">$a>1$ (증가)</span>
+        <p>$x=m$ 에서 최솟값 $\log_{a}m$<br>
+           $x=n$ 에서 최댓값 $\log_{a}n$</p>
+      </div>
+      <div class="card warm">
+        <span class="tag">$0&lt;a&lt;1$ (감소)</span>
+        <p>$x=m$ 에서 최댓값 $\log_{a}m$<br>
+           $x=n$ 에서 최솟값 $\log_{a}n$</p>
+      </div>
+    </div>
+    <div class="card good">
+      <span class="tag">지수함수와 같은 논리</span>
+      <p>로그함수도 <strong>단조함수</strong>이므로 구간의 양 끝만 보면 됩니다.
+         다만 정의역이 <strong>양수 범위</strong>여야 한다는 조건이 하나 더 붙습니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 5차시 ═════════ -->
+<section class="slide section" data-sec="5차시" data-notes="칠판에 (1/2)^x < (1/2)^3 을 쓰고 'x는?' 으로 시작. 학생 대부분이 x<3 이라고 답한다. 틀렸다는 것을 그래프로 보여 주는 게 이번 차시.">
+  <div class="num">05</div>
+  <h1>방정식과 부등식</h1>
+  <p class="lead">밑이 $1$ 보다 작으면 <strong>부등호가 뒤집힙니다.</strong></p>
+</section>
+
+<section class="slide" data-sec="5차시" data-notes="방정식은 쉬운 쪽. 밑을 같게 맞추면 지수만 비교하면 된다.
+로그방정식은 진수 조건을 먼저 쓰고 시작하는 습관을 들이게 한다. 구한 해를 조건에 대입해 확인하는 절차까지 한 세트.">
+  <h2>방정식 — 밑을 같게 맞춘다 <span class="pg">p.28</span></h2>
+  <div class="body">
+    <div class="cols">
+      <div class="card accent">
+        <span class="tag">지수방정식</span>
+        <p style="line-height:2">
+          $a^{f(x)}=a^{g(x)}\iff f(x)=g(x)$<br>
+          $a^{f(x)}=b\iff f(x)=\log_{a}b$</p>
+      </div>
+      <div class="card accent">
+        <span class="tag">로그방정식</span>
+        <p style="line-height:2">
+          $\log_{a}f(x)=\log_{a}g(x)$<br>
+          $\iff f(x)=g(x),\ f(x)>0,\ g(x)>0$</p>
+      </div>
+    </div>
+    <div class="card bad">
+      <span class="tag">순서를 지킬 것</span>
+      <p><strong>① 진수 조건을 먼저 쓴다 → ② 식을 푼다 → ③ 구한 해가 조건을 만족하는지 확인한다.</strong><br>
+         ③을 건너뛰면 없는 해를 답으로 적게 됩니다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-sec="5차시" data-notes="영상 (약 45초). 앞부분이 이번 차시의 핵심.
+· 왼쪽(증가)과 오른쪽(감소)에 각각 x₁, x₂ 를 찍어 두었다. 두 그림 모두 전제 a^x₁ < a^x₂ 를 만족하도록 배치되어 있다.
+· 오른쪽에서는 x₁ 이 오른쪽에 와야 그 전제가 성립한다는 점을 반드시 짚는다. 여기가 부등호가 뒤집히는 이유.
+· 뒷부분은 로그부등식 풀이 순서.">
+  <h2>왜 부등호가 뒤집히는가 <span class="pg">p.28</span></h2>
+  <div class="body">
+    <div class="video-wrap"><video data-src="media/S5ExpLogSolve.mp4" controls playsinline preload="metadata"></video></div>
+  </div>
+</section>
+
+<section class="slide" data-sec="5차시" data-notes="부등식 정리. 표를 보고 '밑이 1보다 작으면 뒤집는다'를 입으로 말하게 시킨다.
+실생활 활용(반감기, 복리, 소리의 세기)은 시간이 남으면 언급. 대개 지수함수 모델에서 로그를 취해 미지수를 끌어내리는 형태.">
+  <h2>부등식 — 밑이 방향을 정한다 <span class="pg">p.28</span></h2>
+  <div class="body">
+    <table>
+      <tr><th style="width:26%">밑</th><th>지수부등식</th><th>로그부등식</th></tr>
+      <tr><th>$a>1$</th>
+        <td>$a^{f(x)}&lt;a^{g(x)}\iff f&lt;g$</td>
+        <td>$\log_{a}f&lt;\log_{a}g\iff 0&lt;f&lt;g$</td></tr>
+      <tr><th>$0&lt;a&lt;1$</th>
+        <td class="no">$a^{f(x)}&lt;a^{g(x)}\iff f>g$</td>
+        <td class="no">$\log_{a}f&lt;\log_{a}g\iff f>g>0$</td></tr>
+    </table>
+    <div class="cols">
+      <div class="card good">
+        <span class="tag">기억법</span>
+        <p>밑이 $1$ 보다 <strong>작으면 뒤집는다.</strong><br>
+           그래프가 감소하니까 당연합니다.</p>
+      </div>
+      <div class="card warm">
+        <span class="tag">활용</span>
+        <p>반감기, 복리, 소리의 세기 같은 문제는
+           지수 모델에 <strong>로그를 취해</strong> 미지수를 지수에서 끌어내립니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 6·7차시 / 마무리 ═════════ -->
+<section class="slide" data-sec="6·7차시" data-notes="문제풀이 운영 안내. 강01과 같은 방식.
+이번 강은 그래프 개형을 직접 그리게 하는 문항이 많으니, Level 1 은 반드시 손으로 그리게 할 것.">
+  <h2>6 · 7차시 — 문제풀이 <span class="pg">p.30 ~ 35</span></h2>
+  <div class="body">
+    <table>
+      <tr><th>구성</th><th>쪽</th><th>성격</th><th>수업 운영</th></tr>
+      <tr><td><strong>Level 1</strong> 기초 연습</td><td>30 ~ 31</td>
+        <td>개념 숙지 확인</td><td>그래프를 손으로 그리게 할 것</td></tr>
+      <tr><td><strong>Level 2</strong> 기본 연습</td><td>32 ~ 33</td>
+        <td>기본 응용</td><td>2문항 함께, 나머지 과제</td></tr>
+      <tr><td><strong>Level 3</strong> 실력 완성</td><td>34</td>
+        <td>수학적 사고력</td><td>전체 풀이 해설</td></tr>
+      <tr><td><strong>대표 기출 문제</strong></td><td>35</td>
+        <td>수능·모평 기출</td><td>출제 의도까지 해설</td></tr>
+    </table>
+    <div class="card warm">
+      <span class="tag">이 강의 출제 포인트</span>
+      <p>그래프의 <strong>평행·대칭이동 후 지나는 점</strong>, <strong>점근선</strong>,
+         <strong>정의역·진수 조건</strong>이 결합된 형태가 가장 많이 나옵니다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-sec="마무리" data-notes="한 장 정리. 사진을 찍게 한다.
+다음 강(03 삼각함수)에서는 '주기'라는 새로운 성질이 등장한다고 예고.">
+  <h2>강 02 핵심 한 장 정리</h2>
+  <div class="body">
+    <div class="cols">
+      <div class="card accent">
+        <span class="tag">지수함수</span>
+        <p style="line-height:2">
+          $y=a^{x}$ · 정의역 실수 · 치역 $y>0$<br>
+          $(0,1)$ 을 지나고 점근선 $y=0$<br>
+          이동 : $y=a^{\,x-m}+n$, 점근선 $y=n$
+        </p>
+      </div>
+      <div class="card good">
+        <span class="tag">로그함수</span>
+        <p style="line-height:2">
+          $y=\log_{a}x$ · 정의역 $x>0$ · 치역 실수<br>
+          $(1,0)$ 을 지나고 점근선 $x=0$<br>
+          이동 : $y=\log_{a}(x-m)+n$, 점근선 $x=m$
+        </p>
+      </div>
+    </div>
+    <div class="card bad">
+      <span class="tag">시험에서 이걸로 틀린다</span>
+      <p>점근선을 옮기지 않음 &nbsp;·&nbsp; 진수 조건을 확인하지 않음 &nbsp;·&nbsp;
+         밑이 $1$ 보다 작을 때 부등호를 그대로 둠</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-sec="마무리" data-notes="과제를 칠판에도 남기고 사진을 찍게 한다.
+다음 차시 예고 후 정리.">
+  <h2>과제 &amp; 다음 강</h2>
+  <div class="body">
+    <div class="cols wide-left">
+      <div class="card">
+        <span class="tag">과제</span>
+        <ul style="font-size:25px">
+          <li>유제 1 ~ 10 전체 (p.21 ~ 29)</li>
+          <li>Level 1 기초 연습 (p.30 ~ 31)</li>
+          <li>$y=2^{x}$, $y=\log_{2}x$ 를 <strong>한 좌표평면에</strong> 직접 그려 올 것</li>
+          <li>오답은 <strong>원인을 한 줄</strong>로 적어 올 것</li>
+        </ul>
+      </div>
+      <div class="card good">
+        <span class="tag">다음 강</span>
+        <p><strong>03 삼각함수</strong> (p.36 ~ 51)</p>
+        <p style="margin-top:14px;color:var(--muted);font-size:24px">
+          지금까지의 함수는 한 방향으로만 갔습니다.<br>
+          다음 강의 함수는 <strong>같은 모양을 반복</strong>합니다 — 주기라는 새 성질이 등장합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="chrome">
+  <span class="sec" id="c-sec"></span>
+  <span id="c-title"></span>
+  <span class="sp"></span>
+  <span>2027 EBS 수능특강 수학Ⅰ · 강 02</span>
+  <span id="c-num"></span>
+</div>
+<div id="bar"></div>
+
+</div></div>
+
+<div id="notes"><h4>발표자 노트</h4><div class="n-body" id="n-body"></div></div>
+<div id="overview"></div>
+<div id="help">
+  <kbd>→</kbd> <kbd>Space</kbd> 다음 &nbsp; <kbd>←</kbd> 이전<br>
+  <kbd>N</kbd> 발표자 노트 &nbsp; <kbd>O</kbd> 전체 보기<br>
+  <kbd>F</kbd> 전체 화면 &nbsp; <kbd>B</kbd> 화면 끄기<br>
+  <kbd>Home</kbd> 처음 &nbsp; <kbd>End</kbd> 마지막<br>
+  <kbd>Ctrl</kbd>+<kbd>P</kbd> PDF 로 저장 &nbsp; <kbd>?</kbd> 도움말
+</div>
+<div id="hint"><kbd>?</kbd> 를 누르면 단축키</div>
+
+</body>
+</html>

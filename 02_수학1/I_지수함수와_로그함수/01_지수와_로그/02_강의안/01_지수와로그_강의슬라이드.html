@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>강 01 · 지수와 로그</title>
+
+<!-- 디자인과 동작은 모든 강이 공유합니다. 고치면 전 강에 반영됩니다. -->
+<link rel="stylesheet" href="../../../../00_공통/02_서식_스타일/katex/katex.min.css">
+<link rel="stylesheet" href="../../../../00_공통/02_서식_스타일/slide.css">
+<script defer src="../../../../00_공통/02_서식_스타일/katex/katex.min.js"></script>
+<script defer src="../../../../00_공통/02_서식_스타일/katex/contrib/auto-render.min.js"></script>
+<script defer src="../../../../00_공통/02_서식_스타일/slide.js"></script>
+</head>
+<body>
+
+<div id="viewport"><div id="stage">
+
+<!-- ══════════════════ 표지 ══════════════════ -->
+<section class="slide cover" data-sec="표지" data-notes="첫 시간 오프닝.
+· 수학Ⅰ의 출발점이자 2·3학년 내내 계속 쓰이는 단원이라고 못 박기.
+· '지수 → 로그'는 같은 식을 양쪽에서 읽는 것뿐이라는 한 문장을 먼저 심어 둔다.
+· 교재 p.4~19, 총 7차시(개념 5 + 문제풀이 2) 안내.">
+  <div class="eyebrow">2027 EBS 수능특강 수학Ⅰ · 강 01</div>
+  <h1 class="title">지수와 로그</h1>
+  <p class="lead" style="margin-top:22px">
+    거듭제곱근에서 상용로그까지 — 지수와 로그는<br>
+    <strong>같은 관계를 양쪽에서 읽는 두 가지 언어</strong>입니다.
+  </p>
+  <div class="meta">
+    <span class="chip">교재 p.4 ~ 19</span>
+    <span class="chip">개념 5차시 + 문제풀이 2차시</span>
+    <span class="chip">고2 · 주 4차시 기준 2주</span>
+  </div>
+</section>
+
+<!-- ══════════════════ 로드맵 ══════════════════ -->
+<section class="slide" data-sec="오리엔테이션" data-notes="로드맵을 먼저 보여 주고 '오늘 어디까지' 를 매 차시 시작마다 이 슬라이드로 돌아와 짚는다.
+· 5개 개념이 한 줄로 이어진다는 점을 강조: 거듭제곱근이 있어야 유리수 지수를 정의할 수 있고, 지수가 정의돼야 로그를 정의할 수 있다.
+· 학생 질문 유도: '왜 로그를 굳이 배울까?' → 5차시에서 2³⁰ 같은 큰 수를 곱하지 않고 어림하는 것으로 답이 나온다고 예고.">
+  <h2>이 강의 지도 <span class="pg">p.4 ~ 19</span></h2>
+  <div class="body">
+    <p class="lead">다섯 개념은 <strong>앞이 뒤의 재료</strong>가 되는 순서로 이어집니다.</p>
+    <div class="roadmap">
+      <div class="rm"><div class="n">1차시</div><div class="t">거듭제곱근</div>
+        <div>$\sqrt[n]{a}$ 는 언제 존재하는가</div><div class="p">p.4 ~ 5</div></div>
+      <div class="rm"><div class="n">2차시</div><div class="t">지수의 확장</div>
+        <div>정수 → 유리수 → 실수</div><div class="p">p.6 ~ 7</div></div>
+      <div class="rm"><div class="n">3차시</div><div class="t">로그의 정의와 성질</div>
+        <div>$a^x=N \Leftrightarrow x=\log_a N$</div><div class="p">p.8 ~ 9</div></div>
+      <div class="rm"><div class="n">4차시</div><div class="t">밑의 변환</div>
+        <div>밑이 다른 로그를 묶는 법</div><div class="p">p.10 ~ 11</div></div>
+      <div class="rm"><div class="n">5차시</div><div class="t">상용로그</div>
+        <div>표 읽기와 어림값 구하기</div><div class="p">p.12 ~ 13</div></div>
+    </div>
+    <div class="card warm">
+      <span class="tag">6 · 7차시</span>
+      <p>Level 1 기초 → Level 2 기본 → Level 3 실력 → 대표 기출 (p.14 ~ 19)</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ 1차시 ══════════════════ -->
+<section class="slide section" data-sec="1차시" data-notes="차시 전환. 칠판에 xⁿ = a 만 크게 써 놓고 시작한다.">
+  <div class="num">01</div>
+  <h1>거듭제곱근</h1>
+  <p class="lead">방정식 $x^{n}=a$ 의 실근은 몇 개인가 — 답은 $n$ 의 홀짝에 달려 있다.</p>
+</section>
+
+<section class="slide" data-sec="1차시" data-notes="판서 순서
+1) 제곱근부터 복습: x² = 4 의 근은 ±2. '제곱근이 둘' 이라는 경험을 먼저 꺼낸다.
+2) n제곱근의 정의를 쓴다 — xⁿ = a 의 근.
+3) 용어 정리: 제곱근 / 세제곱근 / 네제곱근 … 을 통틀어 거듭제곱근.
+발문: 'x³ = 8 의 근은 몇 개일까?' (실수 범위에서 1개) → 다음 슬라이드로 연결.">
+  <h2>거듭제곱근의 정의 <span class="pg">p.4</span></h2>
+  <div class="body">
+    <div class="formula big">
+      실수 $a$ 와 $2$ 이상의 자연수 $n$ 에 대하여 &nbsp; $x^{n}=a$ &nbsp; 의 근 $x$
+      <div style="font-size:26px;color:var(--muted);margin-top:14px">
+        이것을 <strong>$a$ 의 $n$ 제곱근</strong>이라 한다
+      </div>
+    </div>
+    <div class="cols">
+      <div class="card">
+        <span class="tag">용어</span>
+        <p>$a$ 의 제곱근, 세제곱근, 네제곱근, $\cdots$ 을 통틀어<br>
+        <strong>$a$ 의 거듭제곱근</strong>이라 한다.</p>
+      </div>
+      <div class="card warm">
+        <span class="tag">주의</span>
+        <p>“$n$ 제곱근”은 <strong>근 전체</strong>를 가리키는 말이고,<br>
+        기호 $\sqrt[n]{a}$ 는 그중 <strong>특정한 하나</strong>를 가리킵니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-sec="1차시" data-notes="이 표가 1차시의 핵심. 표를 통째로 외우게 하지 말고 다음 영상의 그래프로 '보게' 한 뒤 표를 다시 채우게 한다.
+발문: 'n이 짝수이고 a < 0 이면 왜 없을까?' → 짝수 거듭제곱은 항상 0 이상이니까.
+참고: xⁿ = 0 의 근은 0 이므로 ⁿ√0 = 0.">
+  <h2>실수인 $n$ 제곱근 <span class="pg">p.4</span></h2>
+  <div class="body">
+    <p class="lead">$a$ 의 $n$ 제곱근 중 <strong>실수인 것</strong>만 골라내면:</p>
+    <table>
+      <tr><th style="width:26%"></th><th>$a>0$</th><th>$a=0$</th><th>$a<0$</th></tr>
+      <tr><th>$n$ 이 홀수</th><td>$\sqrt[n]{a}$</td><td>$0$</td><td>$\sqrt[n]{a}$</td></tr>
+      <tr><th>$n$ 이 짝수</th><td>$\sqrt[n]{a},\ -\sqrt[n]{a}$</td><td>$0$</td><td class="no">없다</td></tr>
+    </table>
+    <div class="cols">
+      <div class="card accent">
+        <span class="tag">$n$ 홀수</span>
+        <p>$a$ 의 부호에 <strong>관계없이</strong> 실근이 항상 <strong>1개</strong></p>
+      </div>
+      <div class="card bad">
+        <span class="tag">$n$ 짝수</span>
+        <p>$a \ge 0$ 일 때만 존재. $a>0$ 이면 <strong>2개</strong>, $a=0$ 이면 1개, $a&lt;0$ 이면 <strong>없음</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-sec="1차시" data-notes="영상 재생 (약 25초). 재생 전에 예고할 것:
+· 주황 가로선이 y = a. 위에서 아래로 내려온다.
+· 빨간 점이 교점 = 실근.
+멈춤 지점: a 가 음수로 넘어가는 순간 일시정지(스페이스로 슬라이드 넘김 전에 영상 클릭) 하고 '오른쪽은 왜 점이 사라졌지?' 발문.">
+  <h2>왜 홀짝이 갈리는가 — 그래프로 보기 <span class="pg">p.4 설명</span></h2>
+  <div class="body">
+    <div class="video-wrap"><video data-src="media/S1NthRoot.mp4" controls playsinline preload="metadata"></video></div>
+  </div>
+</section>
+
+<section class="slide" data-sec="1차시" data-notes="성질 6가지. 외우라고 하지 말고 '지수로 바꾸면 전부 지수법칙 하나' 라는 것을 2차시에서 회수한다고 예고.
+자주 하는 실수: a > 0, b > 0 조건을 빠뜨리고 음수에 적용하는 것. ⁶√((-3)⁶) = 3 인데 ³√((-3)³) = -3 이라 부호가 어긋난다는 함정을 예고.">
+  <h2>거듭제곱근의 성질 <span class="pg">p.4</span></h2>
+  <div class="body">
+    <p class="lead">$a>0,\ b>0$ 이고 $m,\ n$ 이 $2$ 이상의 자연수일 때</p>
+    <div class="cols">
+      <div class="card">
+        <p style="font-size:30px;line-height:2.1">
+          ① $\left(\sqrt[n]{a}\right)^{n}=a$<br>
+          ② $\sqrt[n]{a}\,\sqrt[n]{b}=\sqrt[n]{ab}$<br>
+          ③ $\dfrac{\sqrt[n]{a}}{\sqrt[n]{b}}=\sqrt[n]{\dfrac{a}{b}}$
+        </p>
+      </div>
+      <div class="card">
+        <p style="font-size:30px;line-height:2.1">
+          ④ $\left(\sqrt[n]{a}\right)^{m}=\sqrt[n]{a^{m}}$<br>
+          ⑤ $\sqrt[m]{\sqrt[n]{a}}=\sqrt[mn]{a}$<br>
+          ⑥ $\sqrt[np]{a^{mp}}=\sqrt[n]{a^{m}}$ &nbsp;<span style="font-size:22px;color:var(--muted)">($p$ 는 자연수)</span>
+        </p>
+      </div>
+    </div>
+    <div class="card bad">
+      <span class="tag">함정</span>
+      <p><strong>$a>0$ 조건</strong>이 빠지면 성립하지 않습니다.<br>
+      예) $\sqrt[6]{(-3)^{6}}=\sqrt[6]{729}=3$ &nbsp;이지만&nbsp;
+      $\sqrt[3]{(-3)^{3}}=\sqrt[3]{-27}=-3$<br>
+      <span style="color:var(--muted);font-size:23px">
+        성질 ⑥ $\sqrt[np]{a^{mp}}=\sqrt[n]{a^{m}}$ 을 음수 밑에 그대로 쓰면 <strong>부호가 어긋납니다.</strong></span></p>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- ══════════════════ 2차시 ══════════════════ -->
+<section class="slide section" data-sec="2차시" data-notes="차시 전환. 칠판에 aᵐ · aⁿ = aᵐ⁺ⁿ 만 써 놓고 시작.">
+  <div class="num">02</div>
+  <h1>지수의 확장</h1>
+  <p class="lead">$a^{0}$ 은 왜 $1$ 인가 — 정의가 아니라 <strong>법칙을 지키려다 보니</strong> 그렇게 될 수밖에 없다.</p>
+</section>
+
+<section class="slide" data-sec="2차시" data-notes="이 슬라이드가 2차시의 철학. 학생들이 'a⁰=1은 그냥 외우는 것' 으로 알고 오는 경우가 대부분이다.
+발문: 'a⁰을 마음대로 5라고 정하면 뭐가 깨질까?' → 지수법칙이 깨진다.
+그래서 정의는 '선택' 이 아니라 '강제' 라는 것을 강조.">
+  <h2>정수 지수 — 법칙을 지키려면 <span class="pg">p.6</span></h2>
+  <div class="body">
+    <div class="formula big">$a^{m}\cdot a^{n}=a^{m+n}$
+      <div style="font-size:24px;color:var(--muted);margin-top:12px">
+        자연수 지수에서 성립하던 이 법칙을 <strong>그대로 유지</strong>하고 싶다
+      </div>
+    </div>
+    <div class="cols">
+      <div class="card good">
+        <span class="tag">$m=0$ 일 때</span>
+        <p>$a^{0}\cdot a^{n}=a^{0+n}=a^{n}$<br>
+        <span style="color:var(--muted)">양변을 $a^{n}$ 으로 나누면</span><br>
+        <strong style="font-size:32px">$a^{0}=1$</strong></p>
+      </div>
+      <div class="card good">
+        <span class="tag">$m=-n$ 일 때</span>
+        <p>$a^{-n}\cdot a^{n}=a^{(-n)+n}=a^{0}=1$<br>
+        <span style="color:var(--muted)">따라서</span><br>
+        <strong style="font-size:32px">$a^{-n}=\dfrac{1}{a^{n}}$</strong></p>
+      </div>
+    </div>
+    <div class="card warm"><span class="tag">조건</span>
+      <p>$a$ 는 $0$ 이 아닌 실수, $n$ 은 양의 정수. — $0^{0}$ 과 $0^{-n}$ 은 정의하지 않습니다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-sec="2차시" data-notes="영상 재생 (약 45초). 앞부분은 방금 판서한 내용의 복습이니 빠르게 넘기고, 뒤쪽 무리수 지수 수직선 부분에서 멈춘다.
+발문: '2^1.4, 2^1.41, 2^1.414 … 이 점들이 어디로 가고 있지?' → 한 점으로 조여 든다 → 그 점을 2^√2 라고 부르기로 한 것.">
+  <h2>정수 · 유리수 · 무리수 지수 <span class="pg">p.6</span></h2>
+  <div class="body">
+    <div class="video-wrap"><video data-src="media/S2ExponentExtension.mp4" controls playsinline preload="metadata"></video></div>
+  </div>
+</section>
+
+<section class="slide" data-sec="2차시" data-notes="유리수 지수의 정의는 '거듭제곱근과 지수를 잇는 다리'. 1차시의 성질 6개가 전부 지수법칙 하나로 흡수된다는 것을 여기서 회수한다.
+판서: ⁿ√(aᵐ) = a^(m/n) 로 바꿔 쓰고, 1차시 성질 ②를 지수법칙으로 다시 증명해 보이기.
+실수 지수는 '그런 게 있다' 수준으로 넘어가되, a > 0 조건이 왜 필요한지는 짚는다((-2)^(1/2)는 실수가 아님).">
+  <h2>유리수 지수와 실수 지수 <span class="pg">p.6</span></h2>
+  <div class="body">
+    <div class="cols">
+      <div class="card accent">
+        <span class="tag">유리수 지수</span>
+        <p>$a>0$, $m$ 은 정수, $n$ 은 $2$ 이상의 정수일 때</p>
+        <p style="font-size:34px;margin-top:10px">$a^{\frac{m}{n}}=\sqrt[n]{a^{m}}$,
+          &nbsp; 특히 $a^{\frac{1}{n}}=\sqrt[n]{a}$</p>
+        <p style="color:var(--muted);font-size:23px;margin-top:12px">
+          1차시의 거듭제곱근 성질 6개가 여기서 <strong>지수법칙 하나</strong>로 흡수됩니다.</p>
+      </div>
+      <div class="card accent">
+        <span class="tag">실수 지수</span>
+        <p>$2^{1},\ 2^{1.4},\ 2^{1.41},\ 2^{1.414},\ \cdots$ 는
+           한 값에 한없이 가까워지고, 그 값을 $2^{\sqrt{2}}$ 로 정의합니다.</p>
+        <p style="color:var(--muted);font-size:23px;margin-top:12px">
+          따라서 $a>0$ 이면 <strong>모든 실수 $x$ 에 대해 $a^{x}$ 가 정의</strong>됩니다.</p>
+      </div>
+    </div>
+    <div class="card bad"><span class="tag">왜 $a>0$ 인가</span>
+      <p>$a&lt;0$ 이면 $(-2)^{\frac{1}{2}}=\sqrt{-2}$ 처럼 실수가 아닌 값이 나옵니다.
+         유리수·실수 지수에서는 <strong>밑이 양수</strong>라는 조건이 반드시 따라붙습니다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-sec="2차시" data-notes="지수법칙 한 장 정리. 학생 노트에 이 표를 그대로 옮기게 한다.
+강조: 지수의 범위가 정수 → 유리수 → 실수로 넓어져도 법칙의 '모양'은 그대로. 바뀌는 건 밑에 붙는 조건뿐.">
+  <h2>지수법칙 — 범위가 넓어져도 모양은 같다 <span class="pg">p.6</span></h2>
+  <div class="body">
+    <table>
+      <tr><th style="width:22%">지수의 범위</th><th>조건</th><th>법칙</th></tr>
+      <tr><th>정수 $m,n$</th><td>$a,b \ne 0$</td>
+        <td>$a^{m}a^{n}=a^{m+n}$ &nbsp; $a^{m}\div a^{n}=a^{m-n}$ &nbsp;
+            $(a^{m})^{n}=a^{mn}$ &nbsp; $(ab)^{n}=a^{n}b^{n}$</td></tr>
+      <tr><th>유리수 $r,s$</th><td>$a>0,\ b>0$</td>
+        <td>$a^{r}a^{s}=a^{r+s}$ &nbsp; $a^{r}\div a^{s}=a^{r-s}$ &nbsp;
+            $(a^{r})^{s}=a^{rs}$ &nbsp; $(ab)^{r}=a^{r}b^{r}$</td></tr>
+      <tr><th>실수 $x,y$</th><td>$a>0,\ b>0$</td>
+        <td>$a^{x}a^{y}=a^{x+y}$ &nbsp; $a^{x}\div a^{y}=a^{x-y}$ &nbsp;
+            $(a^{x})^{y}=a^{xy}$ &nbsp; $(ab)^{x}=a^{x}b^{x}$</td></tr>
+    </table>
+    <div class="card good"><span class="tag">한 줄 정리</span>
+      <p>법칙의 <strong>모양은 그대로</strong>, 바뀌는 것은 <strong>밑에 붙는 조건</strong>뿐입니다.</p>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ══════════════════ 3차시 ══════════════════ -->
+<section class="slide section" data-sec="3차시" data-notes="차시 전환. 칠판에 2ˣ = 8 을 쓰고 'x는?' → 3. 그 다음 2ˣ = 10 을 쓰고 'x는?' → 답할 말이 없다. 그래서 로그가 필요하다.">
+  <div class="num">03</div>
+  <h1>로그의 정의와 성질</h1>
+  <p class="lead">$2^{x}=10$ 의 $x$ 를 부를 <strong>이름</strong>이 필요하다 — 그 이름이 로그.</p>
+</section>
+
+<section class="slide" data-sec="3차시" data-notes="정의 슬라이드. 가장 중요한 것은 '같은 식을 두 방향에서 읽는다'는 감각.
+판서: 2³ = 8 ⟺ log₂8 = 3 을 화살표 양쪽으로 여러 번 왕복시킨다.
+밑/진수 조건은 시험에서 반드시 나오므로 '왜' 를 반드시 설명: 밑이 1이면 1ˣ은 항상 1이라 x를 정할 수 없고, 진수가 0 이하이면 aˣ이 그 값을 가질 수 없다.">
+  <h2>로그의 정의 <span class="pg">p.8</span></h2>
+  <div class="body">
+    <div class="formula big">
+      $a^{x}=N \quad\Longleftrightarrow\quad x=\log_{a}N$
+    </div>
+    <div class="cols">
+      <div class="card accent">
+        <span class="tag">읽는 법</span>
+        <p>$\log_{a}N$ 에서 $a$ 를 <strong>밑</strong>, $N$ 을 <strong>진수</strong>라 하고,
+        $\log_{a}N$ 을 “$a$ 를 밑으로 하는 $N$ 의 로그”라고 읽습니다.</p>
+        <p style="color:var(--muted);font-size:23px;margin-top:12px">
+          $2^{0}=1 \Rightarrow \log_{2}1=0$ &nbsp;·&nbsp;
+          $2^{3}=8 \Rightarrow \log_{2}8=3$</p>
+      </div>
+      <div class="card bad">
+        <span class="tag">정의 조건</span>
+        <p style="font-size:30px">$a>0,\quad a\ne 1,\quad N>0$</p>
+        <p style="color:var(--muted);font-size:23px;margin-top:12px">
+          $a=1$ 이면 $1^{x}$ 은 항상 $1$ 이라 $x$ 를 정할 수 없고,<br>
+          $N\le 0$ 이면 $a^{x}$ 이 그 값을 가질 수 없습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-sec="3차시" data-notes="영상 재생 (약 50초). 전반부는 정의, 후반부는 성질의 유도.
+후반부 시작 전에 예고: '로그의 성질 3개는 외우는 게 아니라 지수법칙 3개를 뒤집은 것이다.'">
+  <h2>정의에서 성질까지 <span class="pg">p.8</span></h2>
+  <div class="body">
+    <div class="video-wrap"><video data-src="media/S3LogDefinition.mp4" controls playsinline preload="metadata"></video></div>
+  </div>
+</section>
+
+<section class="slide" data-sec="3차시" data-notes="성질 3개. 각각 지수법칙의 어느 항목을 뒤집은 것인지 화살표로 연결해서 판서한다.
+자주 하는 실수 (반드시 강조):
+· log(M+N) ≠ log M + log N
+· (log M)ʳ ≠ r log M  — 지수가 진수에 붙어야 계수로 나온다">
+  <h2>로그의 성질 <span class="pg">p.8</span></h2>
+  <div class="body">
+    <p class="lead">$a>0,\ a\ne1$ 이고 $M>0,\ N>0$ 일 때</p>
+    <table>
+      <tr><th style="width:44%">지수법칙</th><th>로그의 성질</th></tr>
+      <tr><td>$a^{m}a^{n}=a^{m+n}$</td><td>$\log_{a}MN=\log_{a}M+\log_{a}N$</td></tr>
+      <tr><td>$a^{m}\div a^{n}=a^{m-n}$</td><td>$\log_{a}\dfrac{M}{N}=\log_{a}M-\log_{a}N$</td></tr>
+      <tr><td>$(a^{m})^{r}=a^{mr}$</td><td>$\log_{a}M^{r}=r\log_{a}M$ &nbsp;<span style="font-size:20px;color:var(--muted)">($r$ 은 실수)</span></td></tr>
+    </table>
+    <div class="card bad">
+      <span class="tag">자주 하는 실수</span>
+      <p>$\log_{a}(M+N) \ne \log_{a}M+\log_{a}N$ &nbsp;&nbsp;·&nbsp;&nbsp;
+         $(\log_{a}M)^{r} \ne r\log_{a}M$
+         <span style="color:var(--muted);font-size:23px">— 지수가 <strong>진수에</strong> 붙어 있어야 계수로 내려옵니다.</span></p>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ══════════════════ 4차시 ══════════════════ -->
+<section class="slide section" data-sec="4차시" data-notes="차시 전환. 칠판에 log₂3 × log₃5 를 쓰고 '이걸 어떻게 계산하지?' 밑이 달라서 손을 못 댄다는 것을 체감시킨 뒤 시작.">
+  <div class="num">04</div>
+  <h1>로그의 밑의 변환</h1>
+  <p class="lead">밑이 제각각이면 손을 못 댄다 — <strong>하나의 밑으로 갈아끼우는</strong> 도구.</p>
+</section>
+
+<section class="slide" data-sec="4차시" data-notes="유도를 학생과 함께. 세 줄이면 끝난다.
+1) log_a b = x, log_c a = y 로 놓는다
+2) 정의로 지수식 복원: aˣ = b, c^y = a
+3) a를 대입: b = (c^y)ˣ = c^(xy) ⟹ log_c b = xy
+마지막에 a ≠ 1 이라 log_c a ≠ 0 이므로 나눌 수 있다는 점을 꼭 짚을 것 (시험에 조건으로 나온다).">
+  <h2>밑의 변환 공식 <span class="pg">p.10</span></h2>
+  <div class="body">
+    <div class="formula big">$\log_{a}b=\dfrac{\log_{c}b}{\log_{c}a}$
+      <div style="font-size:24px;color:var(--muted);margin-top:14px">
+        $a>0,\ a\ne1,\ b>0,\ c>0,\ c\ne1$
+      </div>
+    </div>
+    <ol class="steps">
+      <li>$\log_{a}b=x$, $\log_{c}a=y$ 로 놓으면 &nbsp; $a^{x}=b$, &nbsp; $c^{\,y}=a$</li>
+      <li>$b=a^{x}=\left(c^{\,y}\right)^{x}=c^{\,xy}$ &nbsp;$\Rightarrow$&nbsp; $\log_{c}b=xy=\log_{a}b\cdot\log_{c}a$</li>
+      <li>$a\ne1$ 이므로 $\log_{c}a\ne0$ &nbsp;$\Rightarrow$&nbsp; 양변을 $\log_{c}a$ 로 나눌 수 있다</li>
+    </ol>
+  </div>
+</section>
+
+<section class="slide" data-sec="4차시" data-notes="영상 재생 (약 50초). 유도 과정을 방금 판서한 것과 같은 순서로 보여 주므로, 학생이 놓친 부분을 스스로 메우게 둔다.
+마지막 활용 4가지가 뜰 때 정지해서 다음 슬라이드로 연결.">
+  <h2>유도 과정 다시 보기 <span class="pg">p.10</span></h2>
+  <div class="body">
+    <div class="video-wrap"><video data-src="media/S4BaseChange.mp4" controls playsinline preload="metadata"></video></div>
+  </div>
+</section>
+
+<section class="slide" data-sec="4차시" data-notes="활용 4가지. ③과 ④가 기출 빈출.
+③ 은 '밑의 지수는 분모로, 진수의 지수는 분자로' 라고 리듬으로 외우게 하면 실수가 준다.
+④ 는 처음 보면 낯설지만 밑변환으로 3줄이면 증명된다. 증명을 보여 주고 '외우지 말고 필요할 때 만들어 쓰라' 고 안내.">
+  <h2>밑의 변환의 활용 <span class="pg">p.10</span></h2>
+  <div class="body">
+    <p class="lead">$a>0,\ a\ne1,\ b>0$ 일 때</p>
+    <div class="cols">
+      <div class="card">
+        <p style="font-size:30px;line-height:2.2">
+          ① $\log_{a}b=\dfrac{1}{\log_{b}a}$ &nbsp;<span style="font-size:21px;color:var(--muted)">($b\ne1$)</span><br>
+          ② $\log_{a}b\cdot\log_{b}c=\log_{a}c$ &nbsp;<span style="font-size:21px;color:var(--muted)">($b\ne1,\ c>0$)</span>
+        </p>
+      </div>
+      <div class="card">
+        <p style="font-size:30px;line-height:2.2">
+          ③ $\log_{a^{m}}b^{\,n}=\dfrac{n}{m}\log_{a}b$ &nbsp;<span style="font-size:21px;color:var(--muted)">($m\ne0$)</span><br>
+          ④ $a^{\log_{b}c}=c^{\log_{b}a}$ &nbsp;<span style="font-size:21px;color:var(--muted)">($b\ne1,\ c>0$)</span>
+        </p>
+      </div>
+    </div>
+    <div class="card warm">
+      <span class="tag">암기 리듬</span>
+      <p>③ — <strong>밑의 지수는 분모로, 진수의 지수는 분자로.</strong>
+         예) $\log_{4}8=\log_{2^{2}}2^{3}=\dfrac32\log_{2}2=\dfrac32$</p>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ══════════════════ 5차시 ══════════════════ -->
+<section class="slide section" data-sec="5차시" data-notes="차시 전환. '2³⁰ 은 대략 얼마쯤 될까?' 를 칠판에 쓰고 시작. 직접 곱해 보려는 학생이 나오면 그대로 두고, 상용로그로 30초 만에 어림하는 것을 마지막에 보여 준다.
+※ 교재 범위 주의: 이 교육과정에서 '지표·가수'와 '자릿수 판정'은 다루지 않습니다. 교재(p.12)는 상용로그표 읽기와 N=a×10ⁿ 분해, 그리고 어림값 구하기까지만 다룹니다.">
+  <div class="num">05</div>
+  <h1>상용로그</h1>
+  <p class="lead">$2^{30}$ 은 대략 얼마인가 — 곱하지 않고 <strong>어림해 내는</strong> 방법.</p>
+</section>
+
+<section class="slide" data-sec="5차시" data-notes="정의와 표 읽는 법.
+상용로그표는 시험지에 주어지므로 '외우는 것'이 아니라 '읽는 것'. log 5.73 을 함께 한 번 찾아 본다 (5.7 행 × 3 열 = .7582).
+log 2 = 0.3010, log 3 = 0.4771 은 문제에서 대개 제시되지만 알고 있으면 빠르다고 안내.">
+  <h2>상용로그의 뜻 <span class="pg">p.12</span></h2>
+  <div class="body">
+    <div class="formula">
+      밑이 $10$ 인 로그 $\log_{10}N\ (N>0)$ 을 <strong>상용로그</strong>라 하고,
+      밑을 생략하여 &nbsp;$\log N$&nbsp; 으로 쓴다
+    </div>
+    <div class="cols">
+      <div class="card accent">
+        <span class="tag">예</span>
+        <p style="line-height:2">
+          $\log 10=\log_{10}10=1$<br>
+          $\log\dfrac{1}{100}=\log_{10}10^{-2}=-2$<br>
+          $\log\sqrt{10}=\log_{10}10^{\frac12}=\dfrac12$
+        </p>
+      </div>
+      <div class="card">
+        <span class="tag">상용로그표</span>
+        <p>$1.00$ 부터 $9.99$ 까지 $0.01$ 간격의 상용로그 값이
+           소수 넷째 자리까지 실려 있습니다.</p>
+        <p style="margin-top:12px">$\log 5.73$ → $5.7$ 행과 $3$ 열이 만나는 칸 $.7582$
+           <br><strong>$\log 5.73 = 0.7582$</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-sec="5차시" data-notes="영상 재생 (약 55초). N = a×10ⁿ 분해부터 2³⁰ 어림값까지 한 번에 간다.
+· 정수 부분 n 은 10의 거듭제곱이 몇 번 붙었는지, 소수 부분 log a 는 상용로그표에서 읽을 수 있는 부분.
+· 영상이 끝나면 바로 다음 슬라이드에서 같은 내용을 판서로 굳힌다.">
+  <h2>큰 수를 $a\times 10^{n}$ 으로 쪼개기 <span class="pg">p.12</span></h2>
+  <div class="body">
+    <div class="video-wrap"><video data-src="media/S5CommonLog.mp4" controls playsinline preload="metadata"></video></div>
+  </div>
+</section>
+
+<section class="slide" data-sec="5차시" data-notes="교재 p.12 ⑶ 상용로그의 활용 그대로.
+세 단계로 판서한다.
+① log 2³⁰ = 30 log 2 = 9.03 — 상용로그 값을 먼저 구한다
+② 9.03 = 9 + 0.03 으로 쪼갠다. 0.03 은 상용로그표에서 log 1.07 ≈ 0.03 으로 되짚는다
+③ 9 + log 1.07 = log(1.07 × 10⁹) 이므로 2³⁰ ≈ 1.07 × 10⁹
+발문: '왜 0 ≤ (소수 부분) < 1 이어야 할까?' → 1 ≤ a < 10 이므로 0 ≤ log a < 1.
+※ 자릿수를 묻는 유형은 이 교육과정 범위 밖이라 다루지 않습니다.">
+  <h2>상용로그의 활용 — 어림값 구하기 <span class="pg">p.12</span></h2>
+  <div class="body">
+    <div class="formula good">
+      $N=a\times 10^{n}\ (1\le a&lt;10,\ n\ \text{은 정수})$ &nbsp;$\Longrightarrow$&nbsp;
+      $\log N=n+\log a$
+      <div style="font-size:23px;color:var(--muted);margin-top:12px">
+        $1\le a&lt;10$ 이므로 $0\le\log a&lt;1$ — 정수 부분이 $n$, 소수 부분이 $\log a$
+      </div>
+    </div>
+    <div class="cols wide-left">
+      <div class="card accent">
+        <span class="tag">예 · $2^{30}$ 어림하기</span>
+        <ol class="steps" style="margin-top:4px">
+          <li>$\log 2^{30}=30\log 2=30\times0.3010=9.03$</li>
+          <li>$9.03=9+0.03$ 이고, 표에서 $\log 1.07\approx 0.03$</li>
+          <li>$9+\log1.07=\log(1.07\times10^{9})$
+              &nbsp;$\Rightarrow$&nbsp; $2^{30}\approx 1.07\times10^{9}$</li>
+        </ol>
+      </div>
+      <div class="card warm">
+        <span class="tag">표를 되짚는 방향</span>
+        <p>상용로그표는 <strong>양쪽으로</strong> 씁니다.<br>
+           수 → 로그값 (읽기)<br>
+           로그값 → 수 (되짚기)</p>
+        <p style="margin-top:12px;color:var(--muted);font-size:23px">
+          어림값을 구할 때는 되짚는 방향을 씁니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ══════════════════ 6 · 7차시 ══════════════════ -->
+<section class="slide" data-sec="6·7차시" data-notes="문제풀이 차시 운영 안내.
+· Level 1 은 수업 중 개별 풀이 → 짝 점검.
+· Level 2 는 두 문항만 함께 풀고 나머지는 과제.
+· Level 3 과 대표 기출은 반드시 수업에서 다룬다 (출제 의도 해설이 붙어 있음).
+· 문항코드로 EBSi 푸리봇 해설 검색이 되니 유인물에 코드를 남길 것.">
+  <h2>6 · 7차시 — 문제풀이 <span class="pg">p.14 ~ 19</span></h2>
+  <div class="body">
+    <table>
+      <tr><th>구성</th><th>쪽</th><th>성격</th><th>수업 운영</th></tr>
+      <tr><td><strong>Level 1</strong> 기초 연습</td><td>14 ~ 15</td>
+        <td>개념 숙지 확인</td><td>개별 풀이 → 짝 점검</td></tr>
+      <tr><td><strong>Level 2</strong> 기본 연습</td><td>16 ~ 17</td>
+        <td>기본 응용</td><td>2문항 함께, 나머지 과제</td></tr>
+      <tr><td><strong>Level 3</strong> 실력 완성</td><td>18</td>
+        <td>수학적 사고력</td><td>전체 풀이 해설</td></tr>
+      <tr><td><strong>대표 기출 문제</strong></td><td>19</td>
+        <td>수능·모평 기출</td><td>출제 의도까지 해설</td></tr>
+    </table>
+    <div class="card warm">
+      <span class="tag">자습 안내</span>
+      <p>모든 문항에 붙은 문항코드(<span class="code">26008-00XX</span>)를 EBS<i>i</i> 푸리봇에 검색하면
+         해설과 해설 강의를 바로 볼 수 있습니다. 유인물에 코드를 남겨 주세요.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ 마무리 ══════════════════ -->
+<section class="slide" data-sec="마무리" data-notes="한 장 정리. 학생들이 이 슬라이드를 사진 찍게 해 준다.
+다음 강(02 지수함수와 로그함수)에서 이 공식들이 '그래프'로 바뀐다고 예고.">
+  <h2>강 01 핵심 공식 한 장 정리</h2>
+  <div class="body">
+    <div class="cols">
+      <div class="card accent">
+        <span class="tag">지수</span>
+        <p style="line-height:2.05">
+          $a^{0}=1$, &nbsp; $a^{-n}=\dfrac{1}{a^{n}}$<br>
+          $a^{\frac{m}{n}}=\sqrt[n]{a^{m}}$, &nbsp; $a^{\frac1n}=\sqrt[n]{a}$<br>
+          $a^{x}a^{y}=a^{x+y}$, &nbsp; $(a^{x})^{y}=a^{xy}$
+        </p>
+      </div>
+      <div class="card good">
+        <span class="tag">로그</span>
+        <p style="line-height:2.05">
+          $a^{x}=N \Leftrightarrow x=\log_{a}N$<br>
+          $\log_{a}MN=\log_{a}M+\log_{a}N$<br>
+          $\log_{a}M^{r}=r\log_{a}M$<br>
+          $\log_{a}b=\dfrac{\log_{c}b}{\log_{c}a}$
+        </p>
+      </div>
+    </div>
+    <div class="card bad">
+      <span class="tag">조건 체크리스트</span>
+      <p>거듭제곱근 성질 — $a>0,\ b>0$ &nbsp;·&nbsp;
+         유리수 지수 — $a>0$ &nbsp;·&nbsp;
+         로그 — $a>0,\ a\ne1,\ N>0$</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-sec="마무리" data-notes="마지막 슬라이드. 과제를 칠판에도 남기고 사진을 찍게 한다.
+다음 차시 예고 후 정리.">
+  <h2>자주 하는 실수 &amp; 과제</h2>
+  <div class="body">
+    <div class="cols wide-left">
+      <div class="card bad">
+        <span class="tag">시험에서 이걸로 틀린다</span>
+        <ol style="font-size:25px;line-height:1.85">
+          <li>$n$ 이 짝수일 때 $a&lt;0$ 이면 실수인 $n$ 제곱근이 <strong>없다</strong></li>
+          <li>거듭제곱근 성질을 <strong>음수 밑</strong>에 그대로 적용</li>
+          <li>$\log_{a}(M+N)$ 을 $\log_{a}M+\log_{a}N$ 으로</li>
+          <li>$(\log_{a}M)^{2}$ 과 $\log_{a}M^{2}$ 을 혼동</li>
+          <li>진수 조건 $N>0$ 을 확인하지 않고 답을 확정</li>
+        </ol>
+      </div>
+      <div class="card">
+        <span class="tag">과제</span>
+        <ul style="font-size:25px">
+          <li>유제 1 ~ 10 전체 (p.5 ~ 13)</li>
+          <li>Level 1 기초 연습 (p.14 ~ 15)</li>
+          <li>오답은 <strong>원인을 한 줄</strong>로 적어 올 것</li>
+        </ul>
+        <p style="margin-top:18px;color:var(--muted);font-size:23px">
+          다음 강 — <strong>02 지수함수와 로그함수</strong> (p.20 ~ 35)<br>
+          오늘 배운 식들이 전부 <strong>그래프</strong>로 바뀝니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="chrome">
+  <span class="sec" id="c-sec"></span>
+  <span id="c-title"></span>
+  <span class="sp"></span>
+  <span>2027 EBS 수능특강 수학Ⅰ · 강 01</span>
+  <span id="c-num"></span>
+</div>
+<div id="bar"></div>
+
+</div></div>
+
+<div id="notes"><h4>발표자 노트</h4><div class="n-body" id="n-body"></div></div>
+<div id="overview"></div>
+<div id="help">
+  <kbd>→</kbd> <kbd>Space</kbd> 다음 &nbsp; <kbd>←</kbd> 이전<br>
+  <kbd>N</kbd> 발표자 노트 &nbsp; <kbd>O</kbd> 전체 보기<br>
+  <kbd>F</kbd> 전체 화면 &nbsp; <kbd>B</kbd> 화면 끄기<br>
+  <kbd>Home</kbd> 처음 &nbsp; <kbd>End</kbd> 마지막<br>
+  <kbd>Ctrl</kbd>+<kbd>P</kbd> PDF 로 저장 &nbsp; <kbd>?</kbd> 도움말
+</div>
+<div id="hint"><kbd>?</kbd> 를 누르면 단축키</div>
+
+</body>
+</html>

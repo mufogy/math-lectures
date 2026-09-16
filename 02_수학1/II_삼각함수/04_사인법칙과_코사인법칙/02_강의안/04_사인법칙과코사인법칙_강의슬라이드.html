@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>강 04 · 사인법칙과 코사인법칙</title>
+
+<!-- 디자인과 동작은 모든 강이 공유합니다. 고치면 전 강에 반영됩니다. -->
+<link rel="stylesheet" href="../../../../00_공통/02_서식_스타일/katex/katex.min.css">
+<link rel="stylesheet" href="../../../../00_공통/02_서식_스타일/slide.css">
+<script defer src="../../../../00_공통/02_서식_스타일/katex/katex.min.js"></script>
+<script defer src="../../../../00_공통/02_서식_스타일/katex/contrib/auto-render.min.js"></script>
+<script defer src="../../../../00_공통/02_서식_스타일/slide.js"></script>
+</head>
+<body>
+
+<div id="viewport"><div id="stage">
+
+<section class="slide cover" data-sec="표지" data-notes="오프닝.
+· 강03에서 정의한 sin, cos 을 이제 삼각형에 적용한다.
+· 이 강의 두 법칙은 '변과 각을 서로 바꿔 주는 환전소'라고 설명하면 이해가 빠르다.
+· 강04는 개념이 4개뿐이라 6차시. 남는 1차시는 강03 보충이나 누적평가로 쓸 것.
+· 교재 p.52~67.">
+  <div class="eyebrow">2027 EBS 수능특강 수학Ⅰ · 강 04</div>
+  <h1 class="title">사인법칙과 코사인법칙</h1>
+  <p class="lead" style="margin-top:22px">
+    두 법칙은 <strong>변과 각을 서로 바꿔 주는 환전소</strong>입니다.<br>
+    어느 쪽이 주어졌느냐에 따라 쓸 법칙이 정해집니다.
+  </p>
+  <div class="meta">
+    <span class="chip">교재 p.52 ~ 67</span>
+    <span class="chip">개념 4차시 + 문제풀이 2차시</span>
+    <span class="chip">22 ~ 27차시</span>
+  </div>
+</section>
+
+<section class="slide" data-sec="오리엔테이션" data-notes="로드맵.
+· 이 강은 개념이 4개라 다른 강보다 짧다(6차시).
+· 가장 중요한 것은 '언제 어느 법칙을 쓰는가'의 판단. 마지막 정리 슬라이드에서 표로 다시 잡아 준다.
+· 기호 약속(∠A의 대변이 a)을 처음에 못 박아 둘 것.">
+  <h2>이 강의 지도 <span class="pg">p.52 ~ 67</span></h2>
+  <div class="body">
+    <p class="lead">삼각형에서 <strong>무엇이 주어졌는가</strong>가 쓸 법칙을 정합니다.</p>
+    <div class="cols">
+      <div class="card accent">
+        <span class="tag">1 · 2차시</span>
+        <p style="font-size:27px"><strong>사인법칙</strong> (p.52~53) — 각과 대변의 짝<br>
+           <strong>코사인법칙</strong> (p.54~55) — 두 변과 끼인각</p>
+      </div>
+      <div class="card good">
+        <span class="tag">3 · 4차시</span>
+        <p style="font-size:27px"><strong>삼각형의 모양</strong> (p.56~57) — 각 조건을 변 조건으로<br>
+           <strong>삼각형의 넓이</strong> (p.58~59) — 높이를 sin 으로</p>
+      </div>
+    </div>
+    <div class="card">
+      <span class="tag">기호 약속</span>
+      <p>삼각형 $ABC$ 에서 $\angle A,\ \angle B,\ \angle C$ 의 크기를 각각 $A,\ B,\ C$ 로,
+         그 <strong>대변</strong>의 길이를 각각 $a,\ b,\ c$ 로 씁니다.</p>
+    </div>
+    <div class="card warm">
+      <span class="tag">5 · 6차시</span>
+      <p>Level 1 기초 → Level 2 기본 → Level 3 실력 → 대표 기출 (p.60 ~ 67)</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 1차시 ═════════ -->
+<section class="slide section" data-sec="1차시" data-notes="칠판에 삼각형을 그리고 '각 A와 변 a는 짝'이라는 것을 먼저 못 박는다.">
+  <div class="num">01</div>
+  <h1>사인법칙</h1>
+  <p class="lead">세 개의 비가 전부 같고, 그 값은 <strong>외접원의 지름</strong>입니다.</p>
+</section>
+
+<section class="slide" data-sec="1차시" data-notes="영상 (약 35초). 외접원과 삼각형, 그리고 2R 이라는 값의 정체.
+· 재생 전: '이 세 비가 왜 전부 같을까? 그리고 그 값은 뭘까?'
+· 영상 뒤 활용 세 줄이 뜨면 정지하고 다음 슬라이드로.
+증명은 교재 p.52 에 ∠A가 예각·직각·둔각인 세 경우로 나와 있다. 시간이 되면 예각인 경우만 함께 볼 것.">
+  <h2>세 비가 모두 같은 이유 <span class="pg">p.52</span></h2>
+  <div class="body">
+    <div class="video-wrap"><video data-src="media/S1SineLaw.mp4" controls playsinline preload="metadata"></video></div>
+  </div>
+</section>
+
+<section class="slide" data-sec="1차시" data-notes="법칙과 활용.
+· 2R 이 끼어 있다는 것이 핵심. 외접원 반지름을 묻는 문제는 무조건 사인법칙.
+· '변의 비 = sin 의 비'는 삼각형의 모양 판정(3차시)에서 그대로 쓰인다.
+발문: '두 변과 한 각이 주어졌는데 그 각이 끼인각이 아니면?' → 사인법칙.">
+  <h2>사인법칙 <span class="pg">p.52</span></h2>
+  <div class="body">
+    <div class="formula big">
+      $\dfrac{a}{\sin A}=\dfrac{b}{\sin B}=\dfrac{c}{\sin C}=2R$
+      <div style="font-size:24px;color:var(--muted);margin-top:14px">
+        $R$ 은 삼각형 $ABC$ 의 <strong>외접원의 반지름</strong>
+      </div>
+    </div>
+    <div class="cols">
+      <div class="card accent">
+        <span class="tag">이럴 때 쓴다</span>
+        <p>두 각 + 한 변 → 나머지 변<br>
+           두 변 + 한 대각 → 나머지 각<br>
+           <strong>외접원의 반지름</strong>이 나오면 무조건 이것</p>
+      </div>
+      <div class="card good">
+        <span class="tag">따라 나오는 식</span>
+        <p style="font-size:29px">$\sin A:\sin B:\sin C=a:b:c$</p>
+        <p style="color:var(--muted);font-size:23px;margin-top:10px">
+          $\sin A=\dfrac{a}{2R}$ 이므로 세 값이 같은 비를 이룹니다.
+          3차시에서 그대로 씁니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 2차시 ═════════ -->
+<section class="slide section" data-sec="2차시" data-notes="칠판에 피타고라스 정리를 쓰고 '직각이 아니면 어떻게 될까?' 로 시작.">
+  <div class="num">02</div>
+  <h1>코사인법칙</h1>
+  <p class="lead">피타고라스 정리에 <strong>보정항 하나</strong>가 붙은 것입니다.</p>
+</section>
+
+<section class="slide" data-sec="2차시" data-notes="영상 (약 45초). 각 A를 움직이며 보정항 -2bc cos A 의 값이 어떻게 변하는지 보여 준다.
+· 핵심 순간: A = 90° 일 때 보정항이 정확히 0 이 되어 피타고라스로 돌아간다.
+· 재생 전 발문: 'A가 커지면 대변 a는 어떻게 될까?' → 길어진다 → cos A 가 작아지니 보정항이 커진다.
+· 뒤쪽 변형식(cos A = ...)이 나오면 다음 슬라이드로.">
+  <h2>보정항의 정체 <span class="pg">p.54</span></h2>
+  <div class="body">
+    <div class="video-wrap"><video data-src="media/S2CosineLaw.mp4" controls playsinline preload="metadata"></video></div>
+  </div>
+</section>
+
+<section class="slide" data-sec="2차시" data-notes="법칙과 변형식.
+· 원형은 '변을 구할 때', 변형식은 '각을 구할 때' 쓴다. 이 구분을 명확히.
+· 세 변을 다 알면 세 각이 전부 나온다 → 삼각형이 완전히 결정된다(SSS 합동).
+자주 하는 실수: 어느 각의 코사인인지 헷갈려 대변을 잘못 넣는 것. 'A의 맞은편이 a' 를 반복시킬 것.">
+  <h2>코사인법칙 <span class="pg">p.54</span></h2>
+  <div class="body">
+    <div class="cols">
+      <div class="card accent">
+        <span class="tag">변을 구할 때</span>
+        <p style="font-size:29px;line-height:2">
+          $a^{2}=b^{2}+c^{2}-2bc\cos A$<br>
+          $b^{2}=c^{2}+a^{2}-2ca\cos B$<br>
+          $c^{2}=a^{2}+b^{2}-2ab\cos C$</p>
+      </div>
+      <div class="card good">
+        <span class="tag">각을 구할 때</span>
+        <p style="font-size:29px;line-height:2.1">
+          $\cos A=\dfrac{b^{2}+c^{2}-a^{2}}{2bc}$</p>
+        <p style="color:var(--muted);font-size:23px;margin-top:10px">
+          세 변을 알면 <strong>세 각이 전부</strong> 나옵니다.</p>
+      </div>
+    </div>
+    <div class="card bad">
+      <span class="tag">자주 하는 실수</span>
+      <p>어느 각의 코사인인지 헷갈려 <strong>대변을 잘못 넣는 것</strong>.
+         $\cos A$ 의 분자에서 <strong>빠지는 것은 $A$ 의 맞은편 $a^{2}$</strong> 입니다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-sec="2차시" data-notes="언제 무엇을 쓰나 — 이 강에서 가장 실전적인 한 장.
+학생들이 법칙은 아는데 고르지를 못해서 틀린다. 이 표를 외우게 하지 말고, 문제를 볼 때마다 '뭐가 주어졌지?'를 먼저 묻는 습관을 들이게 한다.">
+  <h2>언제 어느 법칙을 쓰나 <span class="pg">p.52 ~ 55</span></h2>
+  <div class="body">
+    <table>
+      <tr><th style="width:34%">주어진 것</th><th>쓸 법칙</th><th>구할 수 있는 것</th></tr>
+      <tr><td>두 각과 한 변 (ASA, AAS)</td><td>사인법칙</td><td>나머지 두 변</td></tr>
+      <tr><td>두 변과 <strong>끼이지 않은</strong> 각</td><td>사인법칙</td><td>나머지 각</td></tr>
+      <tr><td>두 변과 <strong>끼인각</strong> (SAS)</td><td>코사인법칙</td><td>나머지 변</td></tr>
+      <tr><td>세 변 (SSS)</td><td>코사인법칙 (변형식)</td><td>세 각 전부</td></tr>
+      <tr><td>외접원의 반지름이 등장</td><td>사인법칙</td><td>$2R$ 로 연결</td></tr>
+    </table>
+    <div class="card good">
+      <span class="tag">한 줄 판단법</span>
+      <p><strong>끼인각이면 코사인, 대각이면 사인.</strong> 이 한 줄로 대부분 갈립니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 3차시 ═════════ -->
+<section class="slide section" data-sec="3차시" data-notes="칠판에 'a cos A = b cos B 인 삼각형은 어떤 모양일까?' 를 써 놓고 시작.">
+  <div class="num">03</div>
+  <h1>삼각형의 모양</h1>
+  <p class="lead">각에 대한 식은 <strong>변으로 갈아끼워야</strong> 인수분해가 됩니다.</p>
+</section>
+
+<section class="slide" data-sec="3차시" data-notes="영상 (약 40초). a cos A = b cos B 를 변 조건으로 바꿔 인수분해하는 전 과정.
+· 재생 전: '각이 들어 있으면 왜 그대로 못 풀까?' → 각끼리는 더하고 빼는 규칙이 복잡해서.
+· 마지막 결론이 두 가지라는 점을 강조: 이등변 '또는' 직각. 하나만 쓰면 감점.">
+  <h2>각을 변으로 바꾸는 과정 <span class="pg">p.56</span></h2>
+  <div class="body">
+    <div class="video-wrap"><video data-src="media/S3TriangleShape.mp4" controls playsinline preload="metadata"></video></div>
+  </div>
+</section>
+
+<section class="slide" data-sec="3차시" data-notes="도구와 판정 결과 정리.
+· 도구는 두 개뿐: sin A = a/2R, cos A = (b²+c²-a²)/2bc
+· 인수분해 결과를 해석하는 연습이 핵심. (a-b)=0 이면 이등변, (a²+b²-c²)=0 이면 직각.
+· 결론이 '또는'으로 두 개 나오는 경우가 많으니 하나만 쓰지 않도록 반복 강조.">
+  <h2>도구와 판정 <span class="pg">p.56</span></h2>
+  <div class="body">
+    <div class="cols">
+      <div class="card accent">
+        <span class="tag">각 → 변 도구</span>
+        <p style="font-size:28px;line-height:2.1">
+          $\sin A=\dfrac{a}{2R}$<br>
+          $\cos A=\dfrac{b^{2}+c^{2}-a^{2}}{2bc}$</p>
+      </div>
+      <div class="card good">
+        <span class="tag">인수분해 결과 읽기</span>
+        <p style="line-height:1.95">
+          $a-b=0\ \Rightarrow\ a=b$ 인 <strong>이등변삼각형</strong><br>
+          $a^{2}+b^{2}-c^{2}=0\ \Rightarrow\ C=90^{\circ}$ 인 <strong>직각삼각형</strong><br>
+          $a=b=c\ \Rightarrow$ <strong>정삼각형</strong></p>
+      </div>
+    </div>
+    <div class="card bad">
+      <span class="tag">감점 포인트</span>
+      <p>인수분해 결과가 두 개면 답도 두 개입니다.
+         <strong>“이등변삼각형 또는 직각삼각형”</strong> 처럼 <strong>둘 다</strong> 써야 합니다.
+         $a+b\ne 0$ 같은 조건 확인도 잊지 마세요.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 4차시 ═════════ -->
+<section class="slide section" data-sec="4차시" data-notes="칠판에 '밑변 × 높이 ÷ 2' 를 쓰고 '높이를 모르면?' 으로 시작.">
+  <div class="num">04</div>
+  <h1>삼각형의 넓이</h1>
+  <p class="lead">높이를 몰라도 됩니다 — <strong>$\sin$ 으로 갈아끼우면</strong> 되니까.</p>
+</section>
+
+<section class="slide" data-sec="4차시" data-notes="영상 (약 35초). 높이 h 를 b sin A 로 바꾸는 한 번의 치환이 전부.
+· 재생 전: '높이를 그었는데 길이를 모른다. 어떻게 구할까?' → 직각삼각형에서 sin.
+· 영상 끝의 대칭형 세 식을 같이 읽는다.">
+  <h2>높이를 $\sin$ 으로 바꾸기 <span class="pg">p.58</span></h2>
+  <div class="body">
+    <div class="video-wrap"><video data-src="media/S4TriangleArea.mp4" controls playsinline preload="metadata"></video></div>
+  </div>
+</section>
+
+<section class="slide" data-sec="4차시" data-notes="넓이 공식 모음.
+· 기본형은 '두 변과 끼인각'. 이것만 정확히 알면 대부분 풀린다.
+· 헤론의 공식은 세 변만 주어질 때. 계산이 무거우니 코사인법칙으로 각을 구해 푸는 편이 빠를 때도 많다.
+· 사각형의 넓이(대각선 × 대각선 × sin ÷ 2)는 교재 참고에 있는 확장. 기출에 나온다.">
+  <h2>넓이 공식 <span class="pg">p.58</span></h2>
+  <div class="body">
+    <div class="formula big">
+      $S=\dfrac12 bc\sin A=\dfrac12 ca\sin B=\dfrac12 ab\sin C$
+      <div style="font-size:24px;color:var(--muted);margin-top:14px">
+        <strong>두 변과 그 끼인각</strong>만 있으면 됩니다
+      </div>
+    </div>
+    <div class="cols">
+      <div class="card">
+        <span class="tag">세 변만 주어지면</span>
+        <p>헤론의 공식 &nbsp; $S=\sqrt{s(s-a)(s-b)(s-c)}$<br>
+        <span style="color:var(--muted);font-size:23px">
+          단, $s=\dfrac{a+b+c}{2}$</span></p>
+      </div>
+      <div class="card warm">
+        <span class="tag">사각형으로 확장</span>
+        <p>두 대각선의 길이가 $p,\ q$ 이고 이루는 각이 $\theta$ 인 사각형의 넓이<br>
+           <strong>$S=\dfrac12 pq\sin\theta$</strong></p>
+      </div>
+    </div>
+    <div class="card good">
+      <span class="tag">연결</span>
+      <p>사인법칙의 $\sin A=\dfrac{a}{2R}$ 을 넣으면
+         $S=\dfrac{abc}{4R}$ 도 나옵니다. 외접원이 얽힌 문제에서 유용합니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 5·6차시 / 마무리 ═════════ -->
+<section class="slide" data-sec="5·6차시" data-notes="문제풀이 운영. 이 강은 Level 1·2 가 각각 3쪽씩으로 다른 강보다 문항이 많다(p.60~65).
+그림을 반드시 직접 그려서 주어진 조건을 표시하게 하는 습관을 들일 것.">
+  <h2>5 · 6차시 — 문제풀이 <span class="pg">p.60 ~ 67</span></h2>
+  <div class="body">
+    <table>
+      <tr><th>구성</th><th>쪽</th><th>성격</th><th>수업 운영</th></tr>
+      <tr><td><strong>Level 1</strong> 기초 연습</td><td>60 ~ 62</td>
+        <td>개념 숙지 확인</td><td>그림에 조건을 표시하게 할 것</td></tr>
+      <tr><td><strong>Level 2</strong> 기본 연습</td><td>63 ~ 65</td>
+        <td>기본 응용</td><td>2문항 함께, 나머지 과제</td></tr>
+      <tr><td><strong>Level 3</strong> 실력 완성</td><td>66</td>
+        <td>수학적 사고력</td><td>전체 풀이 해설</td></tr>
+      <tr><td><strong>대표 기출 문제</strong></td><td>67</td>
+        <td>수능·모평 기출</td><td>출제 의도까지 해설</td></tr>
+    </table>
+    <div class="card warm">
+      <span class="tag">이 강의 출제 포인트</span>
+      <p>두 법칙을 <strong>연달아 쓰는</strong> 형태가 주력입니다.
+         사인법칙으로 변을 구하고 → 코사인법칙으로 각을 구하고 → 넓이로 마무리하는 흐름이 전형적입니다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-sec="마무리" data-notes="한 장 정리. 사진을 찍게 한다.
+다음 강(05)부터 수열로 넘어간다고 예고. 함수·도형과는 결이 다른 단원이라는 것을 미리 알려 둘 것.">
+  <h2>강 04 핵심 한 장 정리</h2>
+  <div class="body">
+    <div class="cols">
+      <div class="card accent">
+        <span class="tag">두 법칙</span>
+        <p style="line-height:2.05">
+          $\dfrac{a}{\sin A}=\dfrac{b}{\sin B}=\dfrac{c}{\sin C}=2R$<br>
+          $a^{2}=b^{2}+c^{2}-2bc\cos A$<br>
+          $\cos A=\dfrac{b^{2}+c^{2}-a^{2}}{2bc}$
+        </p>
+      </div>
+      <div class="card good">
+        <span class="tag">넓이와 판정</span>
+        <p style="line-height:2.05">
+          $S=\dfrac12 bc\sin A=\dfrac{abc}{4R}$<br>
+          $\sin A:\sin B:\sin C=a:b:c$<br>
+          각 조건 → 변 조건 → 인수분해
+        </p>
+      </div>
+    </div>
+    <div class="card bad">
+      <span class="tag">시험에서 이걸로 틀린다</span>
+      <p>끼인각인데 사인법칙을 씀 &nbsp;·&nbsp; $\cos A$ 분자에서 대변을 잘못 뺌 &nbsp;·&nbsp;
+         모양 판정에서 답을 하나만 씀</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-sec="마무리" data-notes="과제와 다음 강 예고.">
+  <h2>과제 &amp; 다음 강</h2>
+  <div class="body">
+    <div class="cols wide-left">
+      <div class="card">
+        <span class="tag">과제</span>
+        <ul style="font-size:25px">
+          <li>유제 1 ~ 8 전체 (p.53 ~ 59)</li>
+          <li>Level 1 기초 연습 (p.60 ~ 62)</li>
+          <li>“언제 어느 법칙을 쓰나” 표를 <strong>보지 않고</strong> 다시 만들어 볼 것</li>
+          <li>오답은 <strong>원인을 한 줄</strong>로 적어 올 것</li>
+        </ul>
+      </div>
+      <div class="card good">
+        <span class="tag">다음 강</span>
+        <p><strong>05 등차수열과 등비수열</strong> (p.68 ~ 83)</p>
+        <p style="margin-top:14px;color:var(--muted);font-size:24px">
+          함수와 도형에서 <strong>수열</strong>로 넘어갑니다.<br>
+          규칙을 찾아 일반항을 세우고, 합을 구하는 것이 전부입니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="chrome">
+  <span class="sec" id="c-sec"></span>
+  <span id="c-title"></span>
+  <span class="sp"></span>
+  <span>2027 EBS 수능특강 수학Ⅰ · 강 04</span>
+  <span id="c-num"></span>
+</div>
+<div id="bar"></div>
+
+</div></div>
+
+<div id="notes"><h4>발표자 노트</h4><div class="n-body" id="n-body"></div></div>
+<div id="overview"></div>
+<div id="help">
+  <kbd>→</kbd> <kbd>Space</kbd> 다음 &nbsp; <kbd>←</kbd> 이전<br>
+  <kbd>N</kbd> 발표자 노트 &nbsp; <kbd>O</kbd> 전체 보기<br>
+  <kbd>F</kbd> 전체 화면 &nbsp; <kbd>B</kbd> 화면 끄기<br>
+  <kbd>Home</kbd> 처음 &nbsp; <kbd>End</kbd> 마지막<br>
+  <kbd>Ctrl</kbd>+<kbd>P</kbd> PDF 로 저장 &nbsp; <kbd>?</kbd> 도움말
+</div>
+<div id="hint"><kbd>?</kbd> 를 누르면 단축키</div>
+
+</body>
+</html>

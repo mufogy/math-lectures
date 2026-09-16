@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>강 03 · 삼각함수</title>
+
+<!-- 디자인과 동작은 모든 강이 공유합니다. 고치면 전 강에 반영됩니다. -->
+<link rel="stylesheet" href="../../../../00_공통/02_서식_스타일/katex/katex.min.css">
+<link rel="stylesheet" href="../../../../00_공통/02_서식_스타일/slide.css">
+<script defer src="../../../../00_공통/02_서식_스타일/katex/katex.min.js"></script>
+<script defer src="../../../../00_공통/02_서식_스타일/katex/contrib/auto-render.min.js"></script>
+<script defer src="../../../../00_공통/02_서식_스타일/slide.js"></script>
+</head>
+<body>
+
+<div id="viewport"><div id="stage">
+
+<section class="slide cover" data-sec="표지" data-notes="오프닝.
+· 지금까지의 함수는 한 방향으로만 갔다. 삼각함수는 같은 모양을 끝없이 반복한다 — '주기'라는 새 성질.
+· 중학교 삼각비(직각삼각형)와의 차이: 각의 범위가 0°~90° 를 벗어나 모든 실수로 확장된다.
+· 교재 p.36~51, 7차시.">
+  <div class="eyebrow">2027 EBS 수능특강 수학Ⅰ · 강 03</div>
+  <h1 class="title">삼각함수</h1>
+  <p class="lead" style="margin-top:22px">
+    직각삼각형에 갇혀 있던 삼각비를 <strong>단위원 위로 풀어놓으면</strong><br>
+    모든 실수에 대해 정의되는 <strong>주기함수</strong>가 됩니다.
+  </p>
+  <div class="meta">
+    <span class="chip">교재 p.36 ~ 51</span>
+    <span class="chip">개념 5차시 + 문제풀이 2차시</span>
+    <span class="chip">15 ~ 21차시</span>
+  </div>
+</section>
+
+<section class="slide" data-sec="오리엔테이션" data-notes="로드맵.
+· 1차시는 '각을 재는 새 단위', 2차시는 '함수의 정의', 3차시는 '그림', 4차시는 '변환 규칙', 5차시는 '활용'.
+· 단위원 하나가 2·4차시를 관통한다는 점을 미리 말해 두면 4차시가 쉬워진다.">
+  <h2>이 강의 지도 <span class="pg">p.36 ~ 51</span></h2>
+  <div class="body">
+    <p class="lead"><strong>단위원</strong> 하나가 이 강 전체를 관통합니다.</p>
+    <div class="roadmap">
+      <div class="rm"><div class="n">1차시</div><div class="t">일반각과 호도법</div>
+        <div>각을 재는 새 단위</div><div class="p">p.36 ~ 37</div></div>
+      <div class="rm"><div class="n">2차시</div><div class="t">삼각함수의 뜻</div>
+        <div>단위원 위의 좌표</div><div class="p">p.38 ~ 39</div></div>
+      <div class="rm"><div class="n">3차시</div><div class="t">삼각함수의 그래프</div>
+        <div>주기 · 최대 · 최소</div><div class="p">p.40 ~ 41</div></div>
+      <div class="rm"><div class="n">4차시</div><div class="t">삼각함수의 성질</div>
+        <div>단위원에서 접기</div><div class="p">p.42 ~ 43</div></div>
+      <div class="rm"><div class="n">5차시</div><div class="t">방정식과 부등식</div>
+        <div>곡선과 직선의 교점</div><div class="p">p.44 ~ 45</div></div>
+    </div>
+    <div class="card warm">
+      <span class="tag">6 · 7차시</span>
+      <p>Level 1 기초 → Level 2 기본 → Level 3 실력 → 대표 기출 (p.46 ~ 51)</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 1차시 ═════════ -->
+<section class="slide section" data-sec="1차시" data-notes="칠판에 '390° 와 30° 는 같은 자리인가?' 를 쓰고 시작. 동경이라는 말을 자연스럽게 끌어낸다.">
+  <div class="num">01</div>
+  <h1>일반각과 호도법</h1>
+  <p class="lead">각을 재는 자를 <strong>도( ° )에서 반지름</strong>으로 바꿉니다.</p>
+</section>
+
+<section class="slide" data-sec="1차시" data-notes="일반각.
+· 시초선(고정), 동경(움직임), 양의 방향(반시계)을 그림으로 정의한다.
+· 같은 자리에 오는 각이 무수히 많다 → 360°×n + α.
+발문: '동경이 제2사분면에 있으려면 α 는?' → 90°+360n < θ < 180°+360n">
+  <h2>일반각 <span class="pg">p.36</span></h2>
+  <div class="body">
+    <div class="formula big">
+      $360^{\circ}\times n+\alpha$ <span style="font-size:24px;color:var(--muted)">(단, $n$ 은 정수)</span>
+    </div>
+    <div class="cols">
+      <div class="card accent">
+        <span class="tag">용어</span>
+        <p><strong>시초선</strong> — 고정된 반직선 (보통 $x$ 축의 양의 방향)<br>
+           <strong>동경</strong> — 회전하는 반직선<br>
+           <strong>양의 방향</strong> — 시곗바늘의 반대 방향</p>
+      </div>
+      <div class="card warm">
+        <span class="tag">사분면의 각</span>
+        <p>동경이 놓인 사분면으로 각을 분류합니다.<br>
+           제2사분면의 각 : $90^{\circ}+360^{\circ}n&lt;\theta&lt;180^{\circ}+360^{\circ}n$</p>
+      </div>
+    </div>
+    <div class="card good">
+      <span class="tag">핵심</span>
+      <p>$30^{\circ}$, $390^{\circ}$, $-330^{\circ}$ 는 <strong>동경이 같은 자리</strong>에 옵니다.
+         삼각함수 값이 모두 같아지는 이유가 바로 이것입니다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-sec="1차시" data-notes="영상 (약 40초). 호의 길이가 반지름과 같아지는 순간 = 1 라디안.
+· 재생 전 예고: 주황색 호가 자라난다. 그 길이가 반지름과 같아지는 순간을 잡아라.
+· 뒤쪽 부채꼴 공식이 뜨면 다음 슬라이드로.
+발문: '왜 굳이 새 단위를 만들까?' → 부채꼴 공식에서 π 와 360 이 사라진다.">
+  <h2>1 라디안이란 <span class="pg">p.36</span></h2>
+  <div class="body">
+    <div class="video-wrap"><video data-src="media/S1Radian.mp4" controls playsinline preload="metadata"></video></div>
+  </div>
+</section>
+
+<section class="slide" data-sec="1차시" data-notes="호도법과 부채꼴.
+· 변환은 π = 180° 하나만 외우면 전부 나온다.
+· 부채꼴 공식은 반드시 θ가 라디안일 때만 성립한다는 점을 강조. 도(°)를 그냥 넣으면 틀린다.
+자주 쓰는 값: 30°=π/6, 45°=π/4, 60°=π/3, 90°=π/2 — 이건 외우게 한다.">
+  <h2>호도법과 부채꼴 <span class="pg">p.36</span></h2>
+  <div class="body">
+    <div class="formula">
+      $\pi\ \text{라디안}=180^{\circ}$ &nbsp;&nbsp;$\Longrightarrow$&nbsp;&nbsp;
+      $1\ \text{라디안}=\dfrac{180^{\circ}}{\pi}$, &nbsp;
+      $1^{\circ}=\dfrac{\pi}{180}\ \text{라디안}$
+    </div>
+    <div class="cols">
+      <div class="card good">
+        <span class="tag">부채꼴</span>
+        <p style="font-size:32px;line-height:1.9">
+          호의 길이 &nbsp;$l=r\theta$<br>
+          넓이 &nbsp;$S=\dfrac12 r^{2}\theta=\dfrac12 rl$</p>
+      </div>
+      <div class="card warm">
+        <span class="tag">자주 쓰는 값</span>
+        <table style="font-size:22px">
+          <tr><th>$30^{\circ}$</th><th>$45^{\circ}$</th><th>$60^{\circ}$</th><th>$90^{\circ}$</th></tr>
+          <tr><td>$\frac{\pi}{6}$</td><td>$\frac{\pi}{4}$</td><td>$\frac{\pi}{3}$</td><td>$\frac{\pi}{2}$</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="card bad">
+      <span class="tag">반드시 확인</span>
+      <p>$l=r\theta$, $S=\frac12 r^{2}\theta$ 는 <strong>$\theta$ 가 라디안일 때만</strong> 성립합니다.
+         도( ° )를 그대로 넣으면 틀립니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 2차시 ═════════ -->
+<section class="slide section" data-sec="2차시" data-notes="칠판에 반지름 1인 원을 그리고 각 θ 의 동경이 만나는 점을 찍는다. '이 점의 좌표가 뭘까?'">
+  <div class="num">02</div>
+  <h1>삼각함수의 뜻</h1>
+  <p class="lead">$\sin\theta$, $\cos\theta$ 는 <strong>단위원 위 점의 좌표</strong> 그 자체입니다.</p>
+</section>
+
+<section class="slide" data-sec="2차시" data-notes="정의.
+· 일반 원(반지름 r)로 먼저 정의하고, r=1 로 놓으면 좌표 자체가 된다는 순서로 간다.
+· tan 은 x=0 일 때 정의되지 않는다 → 나중에 점근선으로 이어진다.
+발문: '중학교 삼각비와 뭐가 달라졌지?' → 각의 범위 제한이 사라졌다.">
+  <h2>단위원으로 정의하기 <span class="pg">p.38</span></h2>
+  <div class="body">
+    <div class="formula big">
+      $\sin\theta=\dfrac{y}{r},\qquad \cos\theta=\dfrac{x}{r},\qquad
+      \tan\theta=\dfrac{y}{x}\ (x\ne 0)$
+    </div>
+    <div class="cols">
+      <div class="card accent">
+        <span class="tag">$r=1$ 이면</span>
+        <p style="font-size:30px">$P(\cos\theta,\ \sin\theta)$</p>
+        <p style="color:var(--muted);font-size:23px;margin-top:10px">
+          좌표를 읽는 것이 곧 삼각함수 값을 읽는 것입니다.</p>
+      </div>
+      <div class="card good">
+        <span class="tag">무엇이 달라졌나</span>
+        <p>중학교 삼각비는 $0^{\circ}&lt;\theta&lt;90^{\circ}$ 에서만 정의됐습니다.<br>
+           단위원을 쓰면 <strong>모든 실수 $\theta$</strong> 에 대해 정의됩니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-sec="2차시" data-notes="영상 (약 45초). 동경을 돌리며 좌표가 변하는 것을 보여 준다.
+· 주황 = cos(가로), 초록 = sin(세로). 색으로 기억시킨다.
+· 동경이 2사분면·3사분면으로 넘어갈 때 부호가 바뀌는 순간을 짚는다.
+· 마지막 sin²+cos²=1 은 '반지름이 1인 원 위의 점'이라는 한 줄로 설명된다.">
+  <h2>동경을 돌려 보기 <span class="pg">p.38</span></h2>
+  <div class="body">
+    <div class="video-wrap"><video data-src="media/S2UnitCircle.mp4" controls playsinline preload="metadata"></video></div>
+  </div>
+</section>
+
+<section class="slide" data-sec="2차시" data-notes="부호표와 항등식.
+· 부호는 외우지 말고 '좌표의 부호'로 생각하게 한다. 2사분면은 x<0, y>0 이므로 sin만 양수이고 cos과 tan은 둘 다 음수. (tan = y/x 이므로 양수÷음수 = 음수)
+· 흔히 쓰는 암기법(올·사·탄·코)을 소개해도 되지만, 원리를 먼저 세운 뒤에.
+· tan θ = sin θ / cos θ 와 sin²+cos²=1 은 이 강 전체에서 계속 쓰인다.">
+  <h2>부호와 기본 관계 <span class="pg">p.38</span></h2>
+  <div class="body">
+    <table>
+      <tr><th style="width:22%"></th><th>제1사분면</th><th>제2사분면</th><th>제3사분면</th><th>제4사분면</th></tr>
+      <tr><th>$\sin\theta$</th><td>$+$</td><td>$+$</td><td class="no">$-$</td><td class="no">$-$</td></tr>
+      <tr><th>$\cos\theta$</th><td>$+$</td><td class="no">$-$</td><td class="no">$-$</td><td>$+$</td></tr>
+      <tr><th>$\tan\theta$</th><td>$+$</td><td class="no">$-$</td><td>$+$</td><td class="no">$-$</td></tr>
+    </table>
+    <div class="cols">
+      <div class="card good">
+        <span class="tag">기본 관계</span>
+        <p style="font-size:30px;line-height:2">
+          $\tan\theta=\dfrac{\sin\theta}{\cos\theta}$
+          &nbsp;<span style="font-size:21px;color:var(--muted)">($\cos\theta\ne0$)</span><br>
+          $\sin^{2}\theta+\cos^{2}\theta=1$</p>
+      </div>
+      <div class="card accent">
+        <span class="tag">외우지 말고 생각할 것</span>
+        <p>부호표는 <strong>좌표의 부호</strong>일 뿐입니다.<br>
+           제2사분면은 $x&lt;0,\ y>0$ 이므로<br>
+           $\sin\theta=\frac{y}{r}$ 만 양수, $\cos\theta=\frac{x}{r}$ 와
+           $\tan\theta=\frac{y}{x}$ 는 <strong>둘 다 음수</strong>입니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 3차시 ═════════ -->
+<section class="slide section" data-sec="3차시" data-notes="칠판에 단위원과 그 오른쪽에 빈 좌표축을 그려 두고 시작. 영상이 바로 이 그림을 채워 준다.">
+  <div class="num">03</div>
+  <h1>삼각함수의 그래프</h1>
+  <p class="lead">단위원을 <strong>펴서 옆으로 늘어놓으면</strong> 사인 곡선이 됩니다.</p>
+</section>
+
+<section class="slide" data-sec="3차시" data-notes="영상 (약 40초). 이 강에서 가장 중요한 한 장면.
+· 왼쪽 원의 점이 위아래로 오르내리는 그 높이가 그대로 오른쪽 곡선이 된다.
+· 재생 중 '지금 원에서 점이 가장 위에 있지? 오른쪽에서는?' 하고 대응시킨다.
+· 끝나면 주기 2π 를 눈으로 확인시킨다.">
+  <h2>단위원을 굴려서 그리기 <span class="pg">p.40</span></h2>
+  <div class="body">
+    <div class="video-wrap"><video data-src="media/S3TrigGraph.mp4" controls playsinline preload="metadata"></video></div>
+  </div>
+</section>
+
+<section class="slide" data-sec="3차시" data-notes="세 그래프 비교표.
+· sin 과 cos 은 모양이 같고 위치만 π/2 다르다는 점을 강조 (나중에 성질 단원에서 회수).
+· tan 은 점근선이 있고 주기가 π 라는 것이 특이점. 왜 π 인가? → 원점 대칭 위치에서 y/x 의 값이 같으므로.
+발문: 'tan 의 주기는 왜 2π 가 아니고 π 일까?'">
+  <h2>세 그래프 한눈에 <span class="pg">p.40</span></h2>
+  <div class="body">
+    <table>
+      <tr><th style="width:20%"></th><th>$y=\sin x$</th><th>$y=\cos x$</th><th>$y=\tan x$</th></tr>
+      <tr><th>정의역</th><td>실수 전체</td><td>실수 전체</td>
+          <td class="no">$x\ne n\pi+\frac{\pi}{2}$<br>
+          <span style="font-size:19px;color:var(--muted)">(단, $n$ 은 정수)</span></td></tr>
+      <tr><th>치역</th><td>$[-1,\,1]$</td><td>$[-1,\,1]$</td><td>실수 전체</td></tr>
+      <tr><th>주기</th><td>$2\pi$</td><td>$2\pi$</td><td class="no">$\pi$</td></tr>
+      <tr><th>대칭</th><td>원점 (기함수)</td><td>$y$ 축 (우함수)</td><td>원점 (기함수)</td></tr>
+      <tr><th>점근선</th><td>없음</td><td>없음</td>
+          <td>$x=n\pi+\frac{\pi}{2}$
+          <span style="font-size:19px;color:var(--muted)">($n$ 은 정수)</span></td></tr>
+    </table>
+    <div class="card good">
+      <span class="tag">$\sin$ 과 $\cos$ 의 관계</span>
+      <p>두 그래프는 <strong>모양이 완전히 같고 위치만 $\frac{\pi}{2}$ 만큼</strong> 어긋나 있습니다.
+         4차시의 $\sin\left(\frac{\pi}{2}+\theta\right)=\cos\theta$ 가 바로 이 이야기입니다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-sec="3차시" data-notes="a, b, c, d 의 역할.
+· |a| = 진폭 → 최대·최소
+· 2π/|b| = 주기 → 가로로 늘었나 줄었나
+· c = 좌우 이동, d = 상하 이동
+문제에서 주기를 묻는 형태가 가장 많으니 2π/|b| 는 반드시 외우게 한다. tan 은 π/|b|.">
+  <h2>$y=a\sin(bx+c)+d$ 읽는 법 <span class="pg">p.40</span></h2>
+  <div class="body">
+    <p class="lead" style="font-size:26px">단, $a\ne 0$, $b\ne 0$ 인 상수</p>
+    <table>
+      <tr><th style="width:16%">기호</th><th>역할</th><th>결과</th></tr>
+      <tr><th>$a$</th><td>세로로 늘이기 (진폭)</td>
+          <td>최댓값 $|a|+d$, 최솟값 $-|a|+d$</td></tr>
+      <tr><th>$b$</th><td>가로로 줄이기</td>
+          <td>주기 $\dfrac{2\pi}{|b|}$ &nbsp;<span style="color:var(--muted);font-size:20px">($\tan$ 은 $\dfrac{\pi}{|b|}$)</span></td></tr>
+      <tr><th>$c$</th><td>좌우 이동</td><td>$-\dfrac{c}{b}$ 만큼 평행이동</td></tr>
+      <tr><th>$d$</th><td>상하 이동</td><td>중심선이 $y=d$ 로</td></tr>
+    </table>
+    <div class="card warm">
+      <span class="tag">시험 포인트</span>
+      <p>주기를 묻는 문항이 가장 많습니다. <strong>$\dfrac{2\pi}{|b|}$</strong> 는 반드시 외우고,
+         $\tan$ 만 <strong>$\dfrac{\pi}{|b|}$</strong> 라는 예외를 기억하세요.</p>
+      <p style="margin-top:12px;color:var(--muted);font-size:23px">
+        $b=0$ 이면 분모가 $0$ 이 되어 식이 성립하지 않습니다.
+        실제로 $y=a\sin c+d$ 는 상수함수라 주기함수가 아닙니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 4차시 ═════════ -->
+<section class="slide section" data-sec="4차시" data-notes="'공식 12개를 외워야 하나요?' 라는 질문이 나오게 유도한 뒤, 단위원 하나로 전부 만들어진다고 답한다.">
+  <div class="num">04</div>
+  <h1>삼각함수의 성질</h1>
+  <p class="lead">외우지 말고 <strong>단위원에서 접으세요.</strong> 공식은 그 자리에서 만들어집니다.</p>
+</section>
+
+<section class="slide" data-sec="4차시" data-notes="영상 (약 50초). 단위원에서 -θ, π-θ, π+θ 를 차례로 보여 준다.
+· 각각이 x축 대칭 / y축 대칭 / 원점 대칭임을 색으로 구분했다.
+· 재생 중 '이 점의 좌표는 원래 점과 뭐가 같고 뭐가 달라?' 를 매번 물을 것.
+· 마지막 π/2 ± θ 는 sin↔cos 이 바뀐다는 점을 따로 강조.">
+  <h2>단위원에서 접어 보기 <span class="pg">p.42</span></h2>
+  <div class="body">
+    <div class="video-wrap"><video data-src="media/S4TrigIdentity.mp4" controls playsinline preload="metadata"></video></div>
+  </div>
+</section>
+
+<section class="slide" data-sec="4차시" data-notes="정리표. 영상을 보고 난 뒤 학생이 직접 채우게 하면 가장 좋다.
+핵심 두 줄:
+· 2nπ, π 가 붙으면 → 함수 그대로, 부호만 확인
+· π/2 가 붙으면 → sin ↔ cos 으로 바뀜
+부호는 '원래 각이 예각이라고 보고 그 자리의 부호'를 따르면 된다는 실전 요령도 알려 줄 것.">
+  <h2>변환 규칙 정리 <span class="pg">p.42</span></h2>
+  <div class="body">
+    <table>
+      <tr><th style="width:18%"></th><th>$\sin$</th><th>$\cos$</th><th>$\tan$</th></tr>
+      <tr><th>$2n\pi+\theta$</th><td>$\sin\theta$</td><td>$\cos\theta$</td><td>$\tan\theta$</td></tr>
+      <tr><th>$-\theta$</th><td>$-\sin\theta$</td><td>$\cos\theta$</td><td>$-\tan\theta$</td></tr>
+      <tr><th>$\pi+\theta$</th><td>$-\sin\theta$</td><td>$-\cos\theta$</td><td>$\tan\theta$</td></tr>
+      <tr><th>$\pi-\theta$</th><td>$\sin\theta$</td><td>$-\cos\theta$</td><td>$-\tan\theta$</td></tr>
+      <tr><th>$\frac{\pi}{2}+\theta$</th><td class="no">$\cos\theta$</td><td class="no">$-\sin\theta$</td>
+          <td class="no">$-\frac{1}{\tan\theta}$</td></tr>
+      <tr><th>$\frac{\pi}{2}-\theta$</th><td class="no">$\cos\theta$</td><td class="no">$\sin\theta$</td>
+          <td class="no">$\frac{1}{\tan\theta}$</td></tr>
+    </table>
+    <p style="font-size:22px;color:var(--muted);margin-top:-14px">
+      $n$ 은 정수. $\tan$ 을 쓰는 칸은 그 값이 정의되는 $\theta$ 에서만 —
+      마지막 두 줄은 $\tan\theta\ne0$ 이어야 합니다.</p>
+    <div class="card good">
+      <span class="tag">두 줄로 압축</span>
+      <p><strong>$\pi$ 가 붙으면</strong> — 함수는 그대로, 부호만 확인<br>
+         <strong>$\frac{\pi}{2}$ 가 붙으면</strong> — $\sin \leftrightarrow \cos$ 으로 바뀜</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 5차시 ═════════ -->
+<section class="slide section" data-sec="5차시" data-notes="칠판에 sin x = 1/2 을 쓰고 'x 는?' 으로 시작. 30° 라고 답이 나오면 '그것뿐일까?' 로 되묻는다.">
+  <div class="num">05</div>
+  <h1>삼각방정식과 부등식</h1>
+  <p class="lead">방정식은 <strong>교점의 $x$ 좌표</strong>, 부등식은 <strong>구간</strong>입니다.</p>
+</section>
+
+<section class="slide" data-sec="5차시" data-notes="영상 (약 50초). 이번 차시의 전부가 이 영상에 들어 있다.
+· 앞부분: sin x = 1/2 의 해가 두 개라는 것을 교점으로 확인.
+· 뒷부분: 부등식은 직선보다 아래쪽 구간을 읽으면 된다.
+멈춤 지점: 해가 두 개 찍힌 순간 정지하고 '왜 두 개지?' 발문 → 주기 안에서 같은 높이를 두 번 지나므로.">
+  <h2>곡선과 직선의 교점 <span class="pg">p.44</span></h2>
+  <div class="body">
+    <div class="video-wrap"><video data-src="media/S5TrigSolve.mp4" controls playsinline preload="metadata"></video></div>
+  </div>
+</section>
+
+<section class="slide" data-sec="5차시" data-notes="풀이 순서 정리.
+· 반드시 '주어진 범위'를 먼저 확인시킨다. 0 ≤ x < 2π 인지 실수 전체인지에 따라 답의 개수가 달라진다.
+· 두 개 이상의 삼각함수가 섞이면 sin²+cos²=1 로 하나로 통일한다 — 이게 Level 2 이상의 단골.
+· 단위원으로 푸는 방법도 있다고 소개하되, 그래프 쪽을 주력으로 가르치는 편이 실수가 적다.">
+  <h2>푸는 순서 <span class="pg">p.44</span></h2>
+  <div class="body">
+    <div class="cols">
+      <div class="card accent">
+        <span class="tag">방정식</span>
+        <ol style="font-size:25px">
+          <li>$\sin x=k$ 꼴로 변형</li>
+          <li>주어진 범위에서 곡선과 직선 $y=k$ 를 그린다</li>
+          <li><strong>교점의 $x$ 좌표</strong>를 읽는다</li>
+        </ol>
+      </div>
+      <div class="card good">
+        <span class="tag">부등식</span>
+        <ol style="font-size:25px">
+          <li>$\sin x&lt;k$ 꼴로 변형</li>
+          <li>먼저 <strong>등식의 해</strong>를 구해 경계를 잡는다</li>
+          <li>곡선이 직선보다 <strong>아래에 있는 구간</strong>을 읽는다</li>
+        </ol>
+      </div>
+    </div>
+    <div class="card bad">
+      <span class="tag">놓치기 쉬운 것</span>
+      <p><strong>주어진 범위를 먼저 확인하세요.</strong> $0\le x&lt;2\pi$ 인지 실수 전체인지에 따라 해의 개수가 달라집니다.<br>
+         두 종류 이상의 삼각함수가 섞이면 $\sin^{2}x+\cos^{2}x=1$ 로 <strong>하나로 통일</strong>한 뒤 풉니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 6·7차시 / 마무리 ═════════ -->
+<section class="slide" data-sec="6·7차시" data-notes="문제풀이 운영.
+이 강은 그래프 개형과 주기 계산이 핵심이니, Level 1 에서 손으로 그리는 연습을 반드시 시킨다.">
+  <h2>6 · 7차시 — 문제풀이 <span class="pg">p.46 ~ 51</span></h2>
+  <div class="body">
+    <table>
+      <tr><th>구성</th><th>쪽</th><th>성격</th><th>수업 운영</th></tr>
+      <tr><td><strong>Level 1</strong> 기초 연습</td><td>46 ~ 47</td>
+        <td>개념 숙지 확인</td><td>그래프를 손으로 그리게 할 것</td></tr>
+      <tr><td><strong>Level 2</strong> 기본 연습</td><td>48 ~ 49</td>
+        <td>기본 응용</td><td>2문항 함께, 나머지 과제</td></tr>
+      <tr><td><strong>Level 3</strong> 실력 완성</td><td>50</td>
+        <td>수학적 사고력</td><td>전체 풀이 해설</td></tr>
+      <tr><td><strong>대표 기출 문제</strong></td><td>51</td>
+        <td>수능·모평 기출</td><td>출제 의도까지 해설</td></tr>
+    </table>
+    <div class="card warm">
+      <span class="tag">이 강의 출제 포인트</span>
+      <p><strong>주기 계산</strong>, <strong>최대·최소</strong>, <strong>삼각방정식의 해의 개수</strong>가
+         결합된 형태가 가장 많이 나옵니다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-sec="마무리" data-notes="한 장 정리. 사진을 찍게 한다.
+다음 강(04)에서는 이 삼각함수를 도형에 적용한다고 예고.">
+  <h2>강 03 핵심 한 장 정리</h2>
+  <div class="body">
+    <div class="cols">
+      <div class="card accent">
+        <span class="tag">각과 정의</span>
+        <p style="line-height:2">
+          일반각 $360^{\circ}n+\alpha$<br>
+          $\pi\,\text{rad}=180^{\circ}$<br>
+          $l=r\theta$, &nbsp;$S=\frac12 r^{2}\theta=\frac12 rl$<br>
+          $P(\cos\theta,\ \sin\theta)$
+        </p>
+      </div>
+      <div class="card good">
+        <span class="tag">성질과 그래프</span>
+        <p style="line-height:2">
+          $\sin^{2}\theta+\cos^{2}\theta=1$<br>
+          $\tan\theta=\frac{\sin\theta}{\cos\theta}$
+          <span style="font-size:20px;color:var(--muted)">($\cos\theta\ne0$)</span><br>
+          주기 : $\sin,\cos$ 은 $2\pi$ · $\tan$ 은 $\pi$<br>
+          $y=a\sin bx$ → 주기 $\frac{2\pi}{|b|}$, 최대 $|a|$
+          <span style="font-size:20px;color:var(--muted)">($b\ne0$)</span>
+        </p>
+      </div>
+    </div>
+    <div class="card bad">
+      <span class="tag">시험에서 이걸로 틀린다</span>
+      <p>부채꼴 공식에 도( ° )를 그대로 대입 &nbsp;·&nbsp; $\tan$ 의 주기를 $2\pi$ 로 착각 &nbsp;·&nbsp;
+         주어진 범위를 보지 않고 해를 하나만 씀</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-sec="마무리" data-notes="과제와 다음 강 예고.">
+  <h2>과제 &amp; 다음 강</h2>
+  <div class="body">
+    <div class="cols wide-left">
+      <div class="card">
+        <span class="tag">과제</span>
+        <ul style="font-size:25px">
+          <li>유제 1 ~ 10 전체 (p.37 ~ 45)</li>
+          <li>Level 1 기초 연습 (p.46 ~ 47)</li>
+          <li>$y=\sin x$, $y=\cos x$, $y=\tan x$ 를 <strong>한 주기씩 직접</strong> 그려 올 것</li>
+          <li>오답은 <strong>원인을 한 줄</strong>로 적어 올 것</li>
+        </ul>
+      </div>
+      <div class="card good">
+        <span class="tag">다음 강</span>
+        <p><strong>04 사인법칙과 코사인법칙</strong> (p.52 ~ 67)</p>
+        <p style="margin-top:14px;color:var(--muted);font-size:24px">
+          이번 강에서 정의한 $\sin$, $\cos$ 을<br>
+          <strong>삼각형에 적용</strong>합니다. 변과 각을 오가는 도구가 됩니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="chrome">
+  <span class="sec" id="c-sec"></span>
+  <span id="c-title"></span>
+  <span class="sp"></span>
+  <span>2027 EBS 수능특강 수학Ⅰ · 강 03</span>
+  <span id="c-num"></span>
+</div>
+<div id="bar"></div>
+
+</div></div>
+
+<div id="notes"><h4>발표자 노트</h4><div class="n-body" id="n-body"></div></div>
+<div id="overview"></div>
+<div id="help">
+  <kbd>→</kbd> <kbd>Space</kbd> 다음 &nbsp; <kbd>←</kbd> 이전<br>
+  <kbd>N</kbd> 발표자 노트 &nbsp; <kbd>O</kbd> 전체 보기<br>
+  <kbd>F</kbd> 전체 화면 &nbsp; <kbd>B</kbd> 화면 끄기<br>
+  <kbd>Home</kbd> 처음 &nbsp; <kbd>End</kbd> 마지막<br>
+  <kbd>Ctrl</kbd>+<kbd>P</kbd> PDF 로 저장 &nbsp; <kbd>?</kbd> 도움말
+</div>
+<div id="hint"><kbd>?</kbd> 를 누르면 단축키</div>
+
+</body>
+</html>
